@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A to Z Online Services - Complete Government Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #ff6f00;
+            --whatsapp: #25D366;
+            --light-bg: #f3f4f6;
+            --text-dark: #263238;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light-bg);
+            color: var(--text-dark);
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .powered-by {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+        nav {
+            background: var(--primary);
+            padding: 1rem 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        section h2 {
+            border-left: 5px solid var(--secondary);
+            padding-left: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .service-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+        }
+        .service-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .multi-column {
+            columns: 2;
+            column-gap: 1rem;
+        }
+        .multi-column li {
+            break-inside: avoid;
+            padding: 0.3rem 0;
+        }
+        .service-card a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: block;
+            transition: transform 0.2s;
+        }
+        .service-card a:hover {
+            transform: translateX(5px);
+            color: var(--secondary);
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        @media (max-width: 768px) {
+            .multi-column {
+                columns: 1;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>A to Z Online Services / ஏ முதல் ஜெட் வரை ஆன்லைன் சேவைகள்</h1>
+        <p>Complete Government Solutions / முழுமையான அரசு தீர்வுகள்</p>
+        <div class="powered-by">Powered by KVP Enterprises</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#esevai"><i class="fas fa-certificate"></i> E-Sevai / இ-சேவை</a></li>
+            <li><a href="#common"><i class="fas fa-tasks"></i> Common Services / பொதுச் சேவைகள்</a></li>
+            <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact / தொடர்பு</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+    <!-- E-Sevai Services -->
+    <section id="esevai">
+        <h2><i class="fas fa-file-alt"></i> E-Sevai Services / இ-சேவை சேவைகள்</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Certificates & Licenses / சான்றிதழ்கள் மற்றும் உரிமங்கள்</h3>
+                <ul class="multi-column">
+                    <li><a href="whatsapp-form.html?service=Community Certificate">Community Certificate / சமூக சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Nativity Certificate">Nativity Certificate / பூர்விக சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Income Certificate">Income Certificate / வருமான சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=First Graduate Certificate">First Graduate Certificate / முதன்முதலில் பட்டம் பெற்ற சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Residence Certificate">Residence Certificate / இருப்பிடம் சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Legal Heir Certificate">Legal Heir Certificate / சட்ட வாரிசு சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Family Migration Certificate">Family Migration Certificate / குடும்ப இடமாற்ற சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Inter-Caste Marriage Certificate">Inter-Caste Marriage Certificate / இனத்திணை திருமண சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=No Male Child Certificate">No Male Child Certificate / ஆண் குழந்தை இல்லாத சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Unmarried Certificate">Unmarried Certificate / திருமணமாகாதவர் சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Deserted Woman Certificate">Deserted Woman Certificate / துறந்த பெண் சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Widow Certificate">Widow Certificate / விதவை சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=OBC Certificate">OBC Certificate / பிற்படுத்தப்பட்ட வகுப்பு சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Unemployment Certificate">Unemployment Certificate / வேலைவாய்ப்பு இல்லாத சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=COVID-19 Death Document">COVID-19 Death Document / கோவிட்-19 மரணம் ஆவணம்</a></li>
+                    <li><a href="whatsapp-form.html?service=Agricultural Income Certificate">Agricultural Income Certificate / விவசாய வருமான சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Small Farmer Certificate">Small Farmer Certificate / சிறு விவசாயி சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Solvency Certificate">Solvency Certificate / சொத்துத்திறன் சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Educational Records Loss Certificate">Educational Records Loss Certificate / கல்வி ஆவண இழப்பு சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Pawn Broker Licence">Pawn Broker Licence / பாண் கடன் உரிமம்</a></li>
+                    <li><a href="whatsapp-form.html?service=Money Lender's Licence">Money Lender's Licence / பணம் கடன் வழங்கும் உரிமம்</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Services -->
+    <section id="common">
+        <h2><i class="fas fa-tasks"></i> Common Services / பொதுச் சேவைகள்</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Essential Services / அவசியமான சேவைகள்</h3>
+                <ul class="multi-column">
+                    <li><a href="whatsapp-form.html?service=PAN Card">PAN Card / பான் அட்டை</a></li>
+                    <li><a href="whatsapp-form.html?service=Aadhaar Card">Aadhaar Card / ஆதார் அட்டை</a></li>
+                    <li><a href="whatsapp-form.html?service=Voter ID">Voter ID / வாக்காளர் அடையாள அட்டை</a></li>
+                    <li><a href="whatsapp-form.html?service=Ration Card">Ration Card / ரேஷன் அட்டை</a></li>
+                    <li><a href="whatsapp-form.html?service=Passport">Passport / பாஸ்போர்ட்</a></li>
+                    <li><a href="whatsapp-form.html?service=Driving Licence">Driving Licence / ஓட்டுநர் உரிமம்</a></li>
+                    <li><a href="whatsapp-form.html?service=PF Services">PF Services / பிஎப் சேவைகள்</a></li>
+                    <li><a href="whatsapp-form.html?service=PM Schemes">PM Schemes / பிரதமர் திட்டங்கள்</a></li>
+                    <li><a href="whatsapp-form.html?service=Insurance">Insurance / காப்பீடு</a></li>
+                    <li><a href="whatsapp-form.html?service=Patta Chitta">Patta Chitta / பட்டா சிட்டா</a></li>
+                    <li><a href="whatsapp-form.html?service=Rental Lease">Rental Lease / வாடகை ஒப்பந்தம்</a></li>
+                    <li><a href="whatsapp-form.html?service=Marriage Certificate">Marriage Certificate / திருமண சான்றிதழ்</a></li>
+                    <li><a href="whatsapp-form.html?service=Other Agreements">Other Agreements / பிற ஒப்பந்தங்கள்</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2><i class="fas fa-envelope"></i> Contact Us / எங்களை தொடர்புகொள்</h2>
+        <div class="service-card">
+            <p><strong><i class="fas fa-phone-alt"></i> Phone / தொலைபேசி:</strong> <a href="tel:+919342772123">+91 93427 72123</a></p>
+            <p><strong><i class="fas fa-map-marker-alt"></i> Address / முகவரி:</strong> First Floor, 74/2, Pudur Main Road, Peelamedu Pudur, Coimbatore - 641004</p>
+            <p><strong><i class="fas fa-envelope"></i> Email / மின்னஞ்சல்:</strong> <a href="mailto:karan.to.praba@gmail.com">karan.to.praba@gmail.com</a></p>
+        </div>
+    </section>
+</div>
+
+    <footer>
+        <p>A to Z Online Services &copy; 2023</p>
+        <p class="powered-by">Powered by KVP Enterprises</p>
+    </footer>
+
+    <a href="whatsapp-form.html" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+</html>
