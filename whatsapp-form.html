@@ -90,21 +90,7 @@
                 font-size: 0.95rem;
             }
         }
-    
-/* Form-specific Chatbot Adjustments */
-bp-web-widget {
-    bottom: 20px !important;
-    right: 20px !important;
-}
-@media (max-width: 480px) {
-    bp-web-widget {
-        bottom: 15px !important;
-        right: 10px !important;
-        width: 90vw !important;
-    }
-}
-
-</style>
+    </style>
 </head>
 <body>
     <div class="form-box">
@@ -137,23 +123,14 @@ bp-web-widget {
         const service = urlParams.get('service');
 
         const documentsData = {
-            // E-Sevai Services
             "Community Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Parent's Certificate / பெற்றோர் சான்றிதழ்"],
             "Nativity Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Birth Certificate / பிறப்பு சான்றிதழ்"],
-            
-            // Common Services
             "PAN Card": ["Aadhaar Card / ஆதார் அட்டை", "Passport Photo / பாஸ்போர்ட் புகைப்படம்"],
             "Aadhaar Card": ["Proof of DOB / பிறந்த தேதி சான்று", "Address Proof / முகவரி சான்று"],
-            
-            // Tax Services
             "GST Registration": ["PAN Card / பான் அட்டை", "Business Address Proof / வணிக முகவரி சான்று"],
             "Income Tax Filing": ["Form 16 / படிவம் 16", "Investment Proofs / முதலீட்டு ஆதாரங்கள்"],
-            
-            // Legal Services
             "RTI Petition": ["Subject Details / விஷய விவரங்கள்", "Department Name / துறை பெயர்"],
             "Affidavit Preparation": ["Purpose Details / நோக்கம் விவரங்கள்", "ID Proof / அடையாள சான்று"],
-            
-            // Career Services
             "Resume Preparation": ["Education Certificates / கல்வி சான்றிதழ்கள்", "Work Experience / பணி அனுபவம்"],
             "Cover Letter": ["Job Description / வேலை விவரம்", "Key Skills / முக்கிய திறன்கள்"]
         };
@@ -210,11 +187,9 @@ bp-web-widget {
                 message += `- ${doc}%0A`;
             });
 
-            // Try to open WhatsApp directly on mobile
             if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                 window.location.href = `whatsapp://send?phone=919342772123&text=${message}`;
                 setTimeout(() => {
-                    // Fallback to web if app not installed
                     if (!document.hidden) {
                         window.open(`https://wa.me/919342772123?text=${message}`, '_blank');
                     }
@@ -226,37 +201,5 @@ bp-web-widget {
             }
         }
     </script>
-
-<!-- Botpress Chatbot with Form Assistance -->
-<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-<script>
-  window.botpressWebChat.init({
-    "botId": "ecfd03e8-a7d1-4261-bf86-5a10c3df2714",
-    "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
-    "messagingUrl": "https://messaging.botpress.cloud",
-    "botName": "Form Assistant",
-    "composerPlaceholder": "Need help filling this form?",
-    "themeColor": "#1a237e",
-    "disableAnimations": true,
-    "closeOnEscape": true,
-    "showConversationsButton": false,
-    "enablePersistHistory": false,
-    "styles": {
-        "chatBackgroundColor": "#f5f5f5"
-    }
-  });
-
-  // Auto-detect service type from URL and notify chatbot
-  document.addEventListener('DOMContentLoaded', function() {
-    const service = new URLSearchParams(window.location.search).get('service');
-    if (service) {
-      window.botpressWebChat.sendEvent({
-        type: 'service_query',
-        service: service
-      });
-    }
-  });
-</script>
-
 </body>
 </html>
