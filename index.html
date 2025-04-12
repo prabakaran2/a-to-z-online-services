@@ -778,57 +778,288 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Service database with documents and processing times
+  // Complete service database with all services
   const services = {
-    // Certificates
+    // Certificates & Licenses
     "community certificate": {
       docs: ["Application form", "Ration card copy", "School certificate", "Parent's community certificate"],
       time: "7-10 working days",
-      note: "For school/college admissions"
+      note: "For school/college admissions and government schemes"
     },
     "nativity certificate": {
       docs: ["Application form", "School records", "Parent's nativity proof", "Address proof"],
       time: "10-15 working days",
-      note: "Required for education/employment"
+      note: "Required for educational and employment purposes"
     },
+    "income certificate": {
+      docs: ["Application form", "Salary slips/Form 16", "Bank statements", "Affidavit"],
+      time: "5-7 working days",
+      note: "Needed for scholarships and government schemes"
+    },
+    "first graduate certificate": {
+      docs: ["Application form", "School/College records", "Family declaration", "Community certificate"],
+      time: "10-15 working days",
+      note: "For educational benefits"
+    },
+    "residence certificate": {
+      docs: ["Application form", "Aadhaar card", "Ration card", "Electricity bill"],
+      time: "7-10 working days",
+      note: "Proof of residence"
+    },
+    "legal heir certificate": {
+      docs: ["Death certificate", "Relationship proof", "Family member details", "Affidavit"],
+      time: "15-20 working days",
+      note: "For claiming assets of deceased family members"
+    },
+    "family migration certificate": {
+      docs: ["Application form", "Address proof (old & new)", "Family ration card", "ID proofs"],
+      time: "10-15 working days",
+      note: "For family relocation records"
+    },
+    "inter-caste marriage certificate": {
+      docs: ["Marriage certificate", "Community certificates (both)", "Joint affidavit", "Photos"],
+      time: "15-20 working days",
+      note: "For government marriage schemes"
+    },
+    "no male child certificate": {
+      docs: ["Application form", "Family ration card", "Birth certificates", "Affidavit"],
+      time: "10-15 working days",
+      note: "For government schemes"
+    },
+    "unmarried certificate": {
+      docs: ["Application form", "Age proof", "Address proof", "Affidavit"],
+      time: "5-7 working days",
+      note: "For visa/marriage purposes"
+    },
+    "deserted woman certificate": {
+      docs: ["Application form", "Police complaint (if any)", "Affidavit", "Witness statements"],
+      time: "15-20 working days",
+      note: "For government support schemes"
+    },
+    "widow certificate": {
+      docs: ["Death certificate (husband)", "Marriage proof", "Address proof", "Affidavit"],
+      time: "10-15 working days",
+      note: "For pension/schemes"
+    },
+    "obc certificate": {
+      docs: ["Application form", "Community proof", "Income certificate", "Residence proof"],
+      time: "15-20 working days",
+      note: "For reservation benefits"
+    },
+    "unemployment certificate": {
+      docs: ["Application form", "Educational certificates", "Address proof", "Affidavit"],
+      time: "5-7 working days",
+      note: "For employment registration"
+    },
+    "covid-19 death document": {
+      docs: ["Death certificate", "Hospital records", "COVID test report", "ID proof"],
+      time: "10-15 working days",
+      note: "For compensation claims"
+    },
+    "agricultural income certificate": {
+      docs: ["Land records", "Income proof", "PAN card", "Affidavit"],
+      time: "10-15 working days",
+      note: "For tax/loan purposes"
+    },
+    "small farmer certificate": {
+      docs: ["Land records", "Income certificate", "Ration card", "Application form"],
+      time: "15-20 working days",
+      note: "For government schemes"
+    },
+    "solvency certificate": {
+      docs: ["Property documents", "Income proof", "Tax receipts", "Affidavit"],
+      time: "7-10 working days",
+      note: "For visa/legal purposes"
+    },
+    "educational records loss certificate": {
+      docs: ["Police complaint", "Affidavit", "Old school details", "ID proof"],
+      time: "5-7 working days",
+      note: "For duplicate certificates"
+    },
+    "pawn broker licence": {
+      docs: ["Application form", "Police clearance", "Address proof", "Business proof"],
+      time: "30-45 working days",
+      note: "For pawn shop operation"
+    },
+    "money lender's licence": {
+      docs: ["Application form", "Financial records", "Police verification", "Bank guarantee"],
+      time: "30-45 working days",
+      note: "For money lending business"
+    },
+    
     // Common Services
     "pan card": {
       docs: ["Form 49A", "Identity proof", "Address proof", "Passport photo"],
       time: "15-20 days",
       note: "Mandatory for financial transactions"
     },
-    "ration card": {
-      docs: ["Form-I", "Aadhaar cards", "Address proof", "Income certificate"],
-      time: "15-20 working days",
-      note: "For subsidized food grains"
+    "aadhaar card": {
+      docs: ["Proof of identity", "Proof of address", "Date of birth proof"],
+      time: "30-45 days",
+      note: "Biometric enrollment required"
     },
+    "voter id": {
+      docs: ["Form 6", "Address proof", "Age proof", "Passport photo"],
+      time: "30-45 days",
+      note: "For election voting"
+    },
+    "ration card": {
+      docs: ["Form-I", "Aadhaar cards of all members", "Address proof", "Income certificate"],
+      time: "15-20 working days",
+      note: "Required for subsidized food grains"
+    },
+    "passport": {
+      docs: ["Proof of address", "Date of birth proof", "PAN card", "Photo"],
+      time: "30-45 days",
+      note: "Police verification required"
+    },
+    "driving licence": {
+      docs: ["Learner's license", "Age proof", "Address proof", "Medical certificate"],
+      time: "15-20 working days",
+      note: "Requires driving test"
+    },
+    "pf services": {
+      docs: ["Form 19/10C/31", "Aadhaar card", "Bank details", "ID proof"],
+      time: "20-30 working days",
+      note: "For PF withdrawal/transfer"
+    },
+    "pm schemes": {
+      docs: ["Application form", "Aadhaar card", "Bank details", "Eligibility proof"],
+      time: "Varies by scheme",
+      note: "Multiple government schemes"
+    },
+    "insurance": {
+      docs: ["Application form", "ID proof", "Medical reports", "Nominee details"],
+      time: "7-10 working days",
+      note: "Health/Life/Vehicle insurance"
+    },
+    "patta chitta": {
+      docs: ["Property documents", "Tax receipts", "Aadhaar card", "Survey details"],
+      time: "15-20 working days",
+      note: "Land ownership records"
+    },
+    "rental lease": {
+      docs: ["Property documents", "ID proofs (both)", "Rent agreement draft", "Witness"],
+      time: "2-3 working days",
+      note: "Notarization required"
+    },
+    "marriage certificate": {
+      docs: ["Application form", "Age proof", "Wedding photos", "Witness"],
+      time: "7-10 working days",
+      note: "Registered marriage proof"
+    },
+    "other agreements": {
+      docs: ["Draft agreement", "ID proofs", "Terms document", "Witness"],
+      time: "2-3 working days",
+      note: "Legal document preparation"
+    },
+    
     // Tax Services
     "gst registration": {
       docs: ["PAN card", "Business address proof", "Bank details", "Digital signature"],
       time: "3-5 working days",
-      note: "For businesses above ₹40L turnover"
+      note: "For businesses with turnover above ₹40 lakhs"
     },
+    "gst filing": {
+      docs: ["GST returns", "Sales/purchase records", "Payment challans", "Bank statements"],
+      time: "1-2 working days",
+      note: "Monthly/Quarterly filing"
+    },
+    "income tax filing": {
+      docs: ["Form 16", "Bank statements", "Investment proofs", "Rent receipts"],
+      time: "1-2 working days",
+      note: "Deadline is July 31st each year"
+    },
+    "tds filing": {
+      docs: ["TDS returns", "Challan details", "PAN of deductees", "Payment proofs"],
+      time: "1-2 working days",
+      note: "Quarterly filing required"
+    },
+    "tax consultation": {
+      docs: ["Financial documents", "Investment proofs", "Previous returns", "Business details"],
+      time: "Same day",
+      note: "Tax planning advice"
+    },
+    
     // Legal Services
     "rti petition": {
       docs: ["Application form", "Identity proof", "Subject details", "Payment proof"],
       time: "1-2 working days",
-      note: "Response within 30 days"
+      note: "Response within 30 days from authorities"
     },
+    "affidavit preparation": {
+      docs: ["Supporting documents", "ID proof", "Address proof"],
+      time: "Same day",
+      note: "Stamp paper required"
+    },
+    "legal notice": {
+      docs: ["Incident details", "Supporting documents", "Recipient address", "Client ID proof"],
+      time: "1-2 working days",
+      note: "Drafted by advocate"
+    },
+    "property documents": {
+      docs: ["Existing documents", "Survey details", "Title deeds", "Tax receipts"],
+      time: "3-5 working days",
+      note: "Verification & preparation"
+    },
+    "legal consultation": {
+      docs: ["Case details", "Existing documents", "ID proof"],
+      time: "Same day",
+      note: "Advocate consultation"
+    },
+    
     // Career Services
     "resume preparation": {
-      docs: ["Education certificates", "Experience letters", "Skills details", "Photo"],
+      docs: ["Educational certificates", "Experience letters", "Skills details", "Photo"],
       time: "1-2 working days",
       note: "Customized for job type"
+    },
+    "cover letter": {
+      docs: ["Job description", "Resume copy", "Your achievements"],
+      time: "1 working day",
+      note: "Tailored to position"
+    },
+    "job application": {
+      docs: ["Resume", "Cover letter", "Certificates", "ID proof"],
+      time: "1 working day",
+      note: "Application assistance"
+    },
+    "interview prep": {
+      docs: ["Job description", "Resume copy"],
+      time: "Same day",
+      note: "Includes mock interviews"
     }
   };
 
-  // Categories with their services
+  // Categories with all services
   const categories = {
-    "certificates": ["Community Certificate", "Nativity Certificate", "Income Certificate"],
-    "common": ["PAN Card", "Ration Card", "Aadhaar Card"],
-    "tax": ["GST Registration", "Income Tax Filing"],
-    "legal": ["RTI Petition", "Affidavit Preparation"],
-    "career": ["Resume Preparation", "Interview Prep"]
+    "certificates": [
+      "Community Certificate", "Nativity Certificate", "Income Certificate", 
+      "First Graduate Certificate", "Residence Certificate", "Legal Heir Certificate",
+      "Family Migration Certificate", "Inter-Caste Marriage Certificate", 
+      "No Male Child Certificate", "Unmarried Certificate", "Deserted Woman Certificate",
+      "Widow Certificate", "OBC Certificate", "Unemployment Certificate",
+      "COVID-19 Death Document", "Agricultural Income Certificate", 
+      "Small Farmer Certificate", "Solvency Certificate", 
+      "Educational Records Loss Certificate", "Pawn Broker Licence", 
+      "Money Lender's Licence"
+    ],
+    "common": [
+      "PAN Card", "Aadhaar Card", "Voter ID", "Ration Card", "Passport",
+      "Driving Licence", "PF Services", "PM Schemes", "Insurance", "Patta Chitta",
+      "Rental Lease", "Marriage Certificate", "Other Agreements"
+    ],
+    "tax": [
+      "GST Registration", "GST Filing", "Income Tax Filing", "TDS Filing", 
+      "Tax Consultation"
+    ],
+    "legal": [
+      "RTI Petition", "Affidavit Preparation", "Legal Notice", 
+      "Property Documents", "Legal Consultation"
+    ],
+    "career": [
+      "Resume Preparation", "Cover Letter", "Job Application", "Interview Prep"
+    ]
   };
 
   // DOM elements
@@ -1081,6 +1312,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (service.includes('tax') || service.includes('gst')) return 'fa-file-invoice';
     if (service.includes('legal') || service.includes('rti')) return 'fa-gavel';
     if (service.includes('resume') || service.includes('interview')) return 'fa-user-tie';
+    if (service.includes('passport') || service.includes('licence')) return 'fa-id-card';
     return 'fa-question-circle';
   }
 
