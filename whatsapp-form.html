@@ -90,7 +90,21 @@
                 font-size: 0.95rem;
             }
         }
-    </style>
+    
+/* Form-specific Chatbot Adjustments */
+bp-web-widget {
+    bottom: 20px !important;
+    right: 20px !important;
+}
+@media (max-width: 480px) {
+    bp-web-widget {
+        bottom: 15px !important;
+        right: 10px !important;
+        width: 90vw !important;
+    }
+}
+
+</style>
 </head>
 <body>
     <div class="form-box">
@@ -212,5 +226,37 @@
             }
         }
     </script>
+
+<!-- Botpress Chatbot with Form Assistance -->
+<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+    "botId": "ecfd03e8-a7d1-4261-bf86-5a10c3df2714",
+    "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+    "messagingUrl": "https://messaging.botpress.cloud",
+    "botName": "Form Assistant",
+    "composerPlaceholder": "Need help filling this form?",
+    "themeColor": "#1a237e",
+    "disableAnimations": true,
+    "closeOnEscape": true,
+    "showConversationsButton": false,
+    "enablePersistHistory": false,
+    "styles": {
+        "chatBackgroundColor": "#f5f5f5"
+    }
+  });
+
+  // Auto-detect service type from URL and notify chatbot
+  document.addEventListener('DOMContentLoaded', function() {
+    const service = new URLSearchParams(window.location.search).get('service');
+    if (service) {
+      window.botpressWebChat.sendEvent({
+        type: 'service_query',
+        service: service
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
