@@ -714,141 +714,147 @@
 
 <div class="chatbot-container" id="chatbotContainer">
   <div class="chatbot-header">
-    <h3><i class="fas fa-robot"></i> Poornima S - Service Assistant</h3>
+    <h3><i class="fas fa-robot"></i> Service Assistant</h3>
     <button class="close-btn" id="closeChatbot">&times;</button>
   </div>
   <div class="chatbot-messages" id="chatbotMessages">
     <div class="message bot-message">
       <div class="message-content">
         <strong>Welcome to A to Z Online Services!</strong><br>
-        I can provide document requirements and processing times for all our services. Please select a service category below:
+        How can I help you today? Please choose a category:
       </div>
     </div>
     <div class="message bot-message">
       <div class="message-content">
-        <div class="service-categories">
-          <button class="service-category" data-category="certificates">Certificates & Licenses</button>
-          <button class="service-category" data-category="common">Common Services</button>
-          <button class="service-category" data-category="tax">Tax Services</button>
-          <button class="service-category" data-category="legal">Legal Services</button>
-          <button class="service-category" data-category="career">Career Services</button>
+        <div class="category-list">
+          <div class="category-item" data-category="certificates">
+            <div class="category-header">
+              <i class="fas fa-file-alt"></i> Certificates & Licenses
+              <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="services-list">
+              <div class="service-item" data-service="community certificate">Community Certificate</div>
+              <div class="service-item" data-service="nativity certificate">Nativity Certificate</div>
+              <div class="service-item" data-service="income certificate">Income Certificate</div>
+              <div class="service-item" data-service="legal heir certificate">Legal Heir Certificate</div>
+              <div class="service-item" data-service="ration card">Ration Card</div>
+            </div>
+          </div>
+          
+          <div class="category-item" data-category="common">
+            <div class="category-header">
+              <i class="fas fa-tasks"></i> Common Services
+              <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="services-list">
+              <div class="service-item" data-service="pan card">PAN Card</div>
+              <div class="service-item" data-service="aadhaar card">Aadhaar Card</div>
+              <div class="service-item" data-service="passport">Passport</div>
+              <div class="service-item" data-service="driving licence">Driving Licence</div>
+            </div>
+          </div>
+          
+          <div class="category-item" data-category="tax">
+            <div class="category-header">
+              <i class="fas fa-file-invoice-dollar"></i> Tax Services
+              <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="services-list">
+              <div class="service-item" data-service="gst registration">GST Registration</div>
+              <div class="service-item" data-service="income tax filing">Income Tax Filing</div>
+            </div>
+          </div>
+          
+          <div class="category-item" data-category="legal">
+            <div class="category-header">
+              <i class="fas fa-gavel"></i> Legal Services
+              <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="services-list">
+              <div class="service-item" data-service="rti petition">RTI Petition</div>
+              <div class="service-item" data-service="affidavit preparation">Affidavit Preparation</div>
+            </div>
+          </div>
+          
+          <div class="category-item" data-category="career">
+            <div class="category-header">
+              <i class="fas fa-user-tie"></i> Career Services
+              <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="services-list">
+              <div class="service-item" data-service="resume preparation">Resume Preparation</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="chatbot-input">
-    <input type="text" id="userInput" placeholder="Ask about any service...">
+    <input type="text" id="userInput" placeholder="Type your question here...">
     <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
   </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Comprehensive Service Database
-  const serviceData = {
-    // Certificates & Licenses
+  // Service information database
+  const serviceInfo = {
     "community certificate": {
-      docs: "1. Application form\n2. Ration card copy\n3. School certificate\n4. Parent's community certificate",
-      time: "7-10 working days",
-      whatsapp: "Community Certificate"
+      docs: ["Application form", "Ration card copy", "School certificate", "Parent's community certificate"],
+      time: "7-10 working days"
     },
     "nativity certificate": {
-      docs: "1. Application form\n2. School records\n3. Parent's certificate\n4. Residence proof",
-      time: "10-12 working days",
-      whatsapp: "Nativity Certificate"
+      docs: ["Application form", "School records", "Parent's certificate", "Residence proof"],
+      time: "10-12 working days"
     },
     "income certificate": {
-      docs: "1. Application form\n2. Salary slips/income proof\n3. Property details\n4. Ration card copy",
-      time: "5-7 working days",
-      whatsapp: "Income Certificate"
+      docs: ["Application form", "Salary slips/income proof", "Property details", "Ration card copy"],
+      time: "5-7 working days"
     },
     "legal heir certificate": {
-      docs: "1. Application form\n2. Death certificate\n3. Family tree\n4. Ration card copy",
-      time: "10-15 working days",
-      whatsapp: "Legal Heir Certificate"
+      docs: ["Application form", "Death certificate", "Family tree", "Ration card copy"],
+      time: "10-15 working days"
     },
     "ration card": {
-      docs: "1. Form-I\n2. Aadhaar cards of all members\n3. Address proof\n4. Income certificate (if applicable)",
-      time: "15-20 working days",
-      whatsapp: "Ration Card"
+      docs: ["Form-I", "Aadhaar cards of all members", "Address proof", "Income certificate (if applicable)"],
+      time: "15-20 working days"
     },
-    
-    // Common Services
     "pan card": {
-      docs: "1. Form 49A\n2. Identity proof (Aadhaar/Driving License)\n3. Address proof\n4. Passport photo",
-      time: "15-20 days",
-      whatsapp: "PAN Card"
+      docs: ["Form 49A", "Identity proof (Aadhaar/Driving License)", "Address proof", "Passport photo"],
+      time: "15-20 days"
     },
     "aadhaar card": {
-      docs: "1. Proof of identity\n2. Proof of address\n3. Proof of date of birth\n4. Mobile number linked",
-      time: "20-30 days",
-      whatsapp: "Aadhaar Card"
+      docs: ["Proof of identity", "Proof of address", "Proof of date of birth", "Mobile number linked"],
+      time: "20-30 days"
     },
     "passport": {
-      docs: "1. Application form\n2. Address proof\n3. Date of birth proof\n4. Photo with white background",
-      time: "30-45 days",
-      whatsapp: "Passport"
+      docs: ["Application form", "Address proof", "Date of birth proof", "Photo with white background"],
+      time: "30-45 days"
     },
     "driving licence": {
-      docs: "1. Application form\n2. Age proof\n3. Address proof\n4. Medical certificate",
-      time: "15-20 days",
-      whatsapp: "Driving Licence"
+      docs: ["Application form", "Age proof", "Address proof", "Medical certificate"],
+      time: "15-20 days"
     },
-    
-    // Tax Services
     "gst registration": {
-      docs: "1. PAN card\n2. Business address proof\n3. Bank details\n4. Digital signature",
-      time: "3-5 working days",
-      whatsapp: "GST Registration"
+      docs: ["PAN card", "Business address proof", "Bank details", "Digital signature"],
+      time: "3-5 working days"
     },
     "income tax filing": {
-      docs: "1. PAN card\n2. Form 16\n3. Bank statements\n4. Investment proofs",
-      time: "2-3 days",
-      whatsapp: "Income Tax Filing"
+      docs: ["PAN card", "Form 16", "Bank statements", "Investment proofs"],
+      time: "2-3 days"
     },
-    
-    // Legal Services
     "rti petition": {
-      docs: "1. Application form\n2. Subject details\n3. Fee payment\n4. Identification proof",
-      time: "1-2 days",
-      whatsapp: "RTI Petition"
+      docs: ["Application form", "Subject details", "Fee payment", "Identification proof"],
+      time: "1-2 days"
     },
     "affidavit preparation": {
-      docs: "1. Content details\n2. Identification proof\n3. Witness details",
-      time: "1 day",
-      whatsapp: "Affidavit Preparation"
+      docs: ["Content details", "Identification proof", "Witness details"],
+      time: "1 day"
     },
-    
-    // Career Services
     "resume preparation": {
-      docs: "1. Educational details\n2. Work experience\n3. Skills information\n4. Reference contacts",
-      time: "1-2 days",
-      whatsapp: "Resume Preparation"
+      docs: ["Educational details", "Work experience", "Skills information", "Reference contacts"],
+      time: "1-2 days"
     }
-  };
-
-  // Service categories with their services
-  const serviceCategories = {
-    "certificates": [
-      "Community Certificate", "Nativity Certificate", "Income Certificate", 
-      "Legal Heir Certificate", "Ration Card", "Marriage Certificate"
-    ],
-    "common": [
-      "PAN Card", "Aadhaar Card", "Passport", "Driving Licence", 
-      "Voter ID", "Patta Chitta"
-    ],
-    "tax": [
-      "GST Registration", "GST Filing", "Income Tax Filing", 
-      "TDS Filing", "Tax Consultation"
-    ],
-    "legal": [
-      "RTI Petition", "Affidavit Preparation", "Legal Notice", 
-      "Property Documents", "Legal Consultation"
-    ],
-    "career": [
-      "Resume Preparation", "Cover Letter", "Job Application", 
-      "Interview Prep"
-    ]
   };
 
   // Initialize elements
@@ -856,169 +862,336 @@ document.addEventListener('DOMContentLoaded', function() {
   const chatbot = document.getElementById('chatbotContainer');
   const messages = document.getElementById('chatbotMessages');
   const userInput = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendMessage');
 
-  // Toggle chatbot
+  // Toggle chatbot visibility
   toggleBtn.addEventListener('click', function() {
     chatbot.classList.toggle('active');
-    // Remove notification badge when opened
     document.querySelector('.notification-badge').style.display = 'none';
   });
 
+  // Close chatbot
   document.getElementById('closeChatbot').addEventListener('click', function() {
     chatbot.classList.remove('active');
   });
 
-  // Send message function
+  // Toggle category expansion
+  document.querySelectorAll('.category-header').forEach(header => {
+    header.addEventListener('click', function() {
+      const categoryItem = this.closest('.category-item');
+      const servicesList = categoryItem.querySelector('.services-list');
+      const arrow = this.querySelector('.arrow');
+      
+      // Toggle the category
+      categoryItem.classList.toggle('expanded');
+      arrow.classList.toggle('fa-chevron-down');
+      arrow.classList.toggle('fa-chevron-up');
+      
+      // Smoothly show/hide services
+      if (categoryItem.classList.contains('expanded')) {
+        servicesList.style.maxHeight = servicesList.scrollHeight + 'px';
+      } else {
+        servicesList.style.maxHeight = '0';
+      }
+    });
+  });
+
+  // Handle service item clicks
+  document.querySelectorAll('.service-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const service = this.getAttribute('data-service');
+      showServiceInfo(service);
+    });
+  });
+
+  // Send message when button clicked or Enter pressed
+  sendBtn.addEventListener('click', sendMessage);
+  userInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+
   function sendMessage() {
     const text = userInput.value.trim();
     if (text) {
-      addMessage(text, true);
+      addMessage(text, 'user');
       userInput.value = '';
       
       setTimeout(() => {
         const response = generateResponse(text);
-        addMessage(response, false);
+        addMessage(response, 'bot');
       }, 500);
     }
   }
 
-  // Generate service buttons for a category
-  function generateServiceButtons(category) {
-    const services = serviceCategories[category] || [];
-    let buttonsHTML = '<div class="service-buttons">';
+  function showServiceInfo(service) {
+    addMessage(service, 'user');
     
-    services.forEach(service => {
-      const serviceKey = service.toLowerCase();
-      buttonsHTML += `<button class="service-button" data-service="${serviceKey}">${service}</button>`;
-    });
-    
-    buttonsHTML += '</div>';
-    return buttonsHTML;
+    setTimeout(() => {
+      if (serviceInfo[service]) {
+        const info = serviceInfo[service];
+        let response = `<strong>${service}</strong><br><br>`;
+        response += `<strong>Documents Required:</strong><br>`;
+        response += info.docs.map(doc => `• ${doc}`).join('<br>');
+        response += `<br><br><strong>Processing Time:</strong> ${info.time}<br><br>`;
+        response += `<a href="https://wa.me/919342772123?text=I%20need%20help%20with%20${encodeURIComponent(service)}" 
+                     target="_blank" class="whatsapp-link">
+                     <i class="fab fa-whatsapp"></i> Get Help on WhatsApp
+                     </a>`;
+        addMessage(response, 'bot');
+      } else {
+        addMessage(`I don't have information about ${service}. Please contact us for assistance.`, 'bot');
+      }
+    }, 300);
   }
 
-  // Generate bot response
   function generateResponse(query) {
     const lowerQuery = query.toLowerCase();
     
-    // Check for service match
-    for (const [service, data] of Object.entries(serviceData)) {
+    // Check if query matches any service
+    for (const [service, info] of Object.entries(serviceInfo)) {
       if (lowerQuery.includes(service)) {
-        return `For <strong>${service}</strong>:<br><br>
-                <strong>Documents Required:</strong><br>
-                ${data.docs.replace(/\n/g, '<br>')}<br><br>
-                <strong>Processing Time:</strong> ${data.time}<br><br>
-                <a href="https://wa.me/919342772123?text=I%20need%20help%20with%20${encodeURIComponent(data.whatsapp)}%20service" 
-                   target="_blank" class="whatsapp-link">
-                   <i class="fab fa-whatsapp"></i> Connect via WhatsApp
-                </a>`;
+        let response = `<strong>${service}</strong><br><br>`;
+        response += `<strong>Documents Required:</strong><br>`;
+        response += info.docs.map(doc => `• ${doc}`).join('<br>');
+        response += `<br><br><strong>Processing Time:</strong> ${info.time}<br><br>`;
+        response += `<a href="https://wa.me/919342772123?text=I%20need%20help%20with%20${encodeURIComponent(service)}" 
+                     target="_blank" class="whatsapp-link">
+                     <i class="fab fa-whatsapp"></i> Get Help on WhatsApp
+                     </a>`;
+        return response;
       }
     }
     
-    // Check if it's a category selection
-    for (const [category, services] of Object.entries(serviceCategories)) {
-      if (lowerQuery.includes(category)) {
-        return `Here are the services we offer in this category:<br><br>
-                ${generateServiceButtons(category)}<br>
-                Please select a service to see document requirements and processing time.`;
-      }
+    // Default responses
+    if (/hi|hello|hey/i.test(query)) {
+      return "Hello! How can I help you today? Please select a service from the list above.";
     }
     
-    // Check for greetings
-    const greetings = ['hi', 'hello', 'hey', 'greetings'];
-    if (greetings.some(greet => lowerQuery.includes(greet))) {
-      return `Hello! I'm here to help with information about our services. Please select a category or ask about a specific service.`;
+    if (/thank|thanks/i.test(query)) {
+      return "You're welcome! Is there anything else I can help with?";
     }
     
-    // Check for thank you
-    const thanks = ['thank', 'thanks', 'appreciate'];
-    if (thanks.some(word => lowerQuery.includes(word))) {
-      return `You're welcome! Is there anything else I can help you with?`;
+    if (/contact|number|phone|call|speak|talk/i.test(query)) {
+      return `You can reach us at:<br><br>
+              <strong>Phone:</strong> <a href="tel:+919342772123">+91 93427 72123</a><br>
+              <strong>WhatsApp:</strong> <a href="https://wa.me/919342772123" target="_blank" class="whatsapp-link">
+                <i class="fab fa-whatsapp"></i> Chat Now
+              </a>`;
     }
     
-    // Check for contact information requests
-    const contactWords = ['contact', 'number', 'phone', 'call', 'speak', 'talk', 'person', 'agent'];
-    if (contactWords.some(word => lowerQuery.includes(word))) {
-      return getContactResponse();
-    }
-    
-    // Default response for unknown queries
-    return `I'm sorry, I don't have information about "${query}".<br><br>
-            ${getContactResponse()}`;
+    return `I'm not sure about "${query}". Please select a service from the list above or contact us for assistance.`;
   }
 
-  // Standard contact response
-  function getContactResponse() {
-    return `Please contact our support team for assistance:<br><br>
-            <strong>Phone:</strong> <a href="tel:+919342772123">+91 93427 72123</a><br>
-            <strong>WhatsApp:</strong> <a href="https://wa.me/919342772123" target="_blank" class="whatsapp-link">
-              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-            </a><br><br>
-            Our team will be happy to help you with your query.`;
-  }
-
-  // Add message to chat
-  function addMessage(text, isUser) {
+  function addMessage(text, sender) {
     const msgDiv = document.createElement('div');
-    msgDiv.className = `message ${isUser ? 'user' : 'bot'}-message`;
+    msgDiv.className = `message ${sender}-message`;
     msgDiv.innerHTML = `<div class="message-content">${text}</div>`;
     messages.appendChild(msgDiv);
     messages.scrollTop = messages.scrollHeight;
-    
-    // Add event listeners for any new buttons
-    setTimeout(() => {
-      document.querySelectorAll('.service-category').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const category = this.getAttribute('data-category');
-          addMessage(this.textContent, true);
-          
-          setTimeout(() => {
-            const response = generateResponse(category);
-            addMessage(response, false);
-          }, 300);
-        });
-      });
-      
-      document.querySelectorAll('.service-button').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const service = this.getAttribute('data-service');
-          addMessage(this.textContent, true);
-          
-          setTimeout(() => {
-            const response = generateResponse(service);
-            addMessage(response, false);
-          }, 300);
-        });
-      });
-    }, 100);
   }
-
-  // Event listeners
-  document.getElementById('sendMessage').addEventListener('click', sendMessage);
-  userInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') sendMessage();
-  });
 });
 </script>
 
 <style>
-/* Add these styles to your existing CSS */
+/* Chatbot Styles */
+.chatbot-container {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  width: 350px;
+  max-height: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.chatbot-container.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.chatbot-header {
+  background: #1a237e;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  max-height: 350px;
+}
+
+.message {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-content {
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  align-items: flex-end;
+}
+
+.user-message .message-content {
+  background: #e3f2fd;
+  color: #263238;
+  border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+  align-items: flex-start;
+}
+
+.bot-message .message-content {
+  background: #f5f5f5;
+  color: #263238;
+  border-bottom-left-radius: 5px;
+}
+
+.chatbot-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.chatbot-input button {
+  background: #1a237e;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chatbot-input button:hover {
+  background: #303f9f;
+}
+
+/* Category and Service Styles */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.category-header {
+  padding: 12px 15px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.category-header:hover {
+  background: #eeeeee;
+}
+
+.category-header i:first-child {
+  margin-right: 10px;
+  color: #1a237e;
+}
+
+.arrow {
+  transition: transform 0.2s;
+}
+
+.services-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.service-item {
+  padding: 10px 15px 10px 40px;
+  cursor: pointer;
+  border-top: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.service-item:hover {
+  background: #f5f5f5;
+}
+
+/* WhatsApp Link */
 .whatsapp-link {
   display: inline-block;
-  background-color: #25D366;
+  background: #25D366;
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
   text-decoration: none;
   margin-top: 10px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .whatsapp-link:hover {
-  background-color: #128C7E;
+  background: #128C7E;
 }
 
 .whatsapp-link i {
   margin-right: 8px;
+}
+
+/* Toggle Button */
+.chatbot-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: #1a237e;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 100;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
 }
 
 .notification-badge {
@@ -1036,54 +1209,19 @@ document.addEventListener('DOMContentLoaded', function() {
   font-size: 12px;
 }
 
-.service-categories, .service-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.service-category, .service-button {
-  background: #e3f2fd;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 0.9rem;
-}
-
-.service-category {
-  background: #1a237e;
-  color: white;
-}
-
-.service-category:hover {
-  background: #303f9f;
-}
-
-.service-button:hover {
-  background: #bbdefb;
-}
-
-.service-buttons {
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.service-button {
-  text-align: left;
-  width: 100%;
-}
-
-/* Style for phone number link */
-.chatbot-messages a[href^="tel:"] {
-  color: #1a237e;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.chatbot-messages a[href^="tel:"]:hover {
-  text-decoration: underline;
+@media (max-width: 768px) {
+  .chatbot-container {
+    width: 90%;
+    left: 5%;
+    bottom: 80px;
+  }
+  
+  .chatbot-toggle {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    bottom: 1rem;
+    left: 1rem;
+  }
 }
 </style>
