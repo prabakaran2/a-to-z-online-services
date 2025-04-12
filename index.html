@@ -188,7 +188,23 @@
                 padding: 0.5rem;
             }
         }
-    </style>
+    
+/* Chatbot Mobile Fixes */
+bp-web-widget {
+    --mobile-height: 60vh !important;
+    --mobile-width: 90vw !important;
+}
+@media (max-width: 768px) {
+    bp-web-widget {
+        bottom: 80px !important;
+        right: 10px !important;
+    }
+    .whatsapp-float {
+        bottom: 140px !important; /* Adjust to avoid overlap */
+    }
+}
+
+</style>
 </head>
 <body>
     <header>
@@ -330,5 +346,30 @@
     <a href="whatsapp-form.html" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+<!-- Botpress Chatbot Integration -->
+<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+    "botId": "ecfd03e8-a7d1-4261-bf86-5a10c3df2714",
+    "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+    "messagingUrl": "https://messaging.botpress.cloud",
+    "botName": "A to Z Services Assistant",
+    "composerPlaceholder": "Ask about certificates or services...",
+    "themeColor": "#1a237e",
+    "avatarUrl": "https://yourdomain.com/logo.png",
+    "phoneNumber": "+919342772123",
+    "emailAddress": "karan.to.praba@gmail.com",
+    "showBotInfoPage": true,
+    "enableFileUpload": true,
+    "allowedMimeTypes": ["image/*", "application/pdf"],
+    "styles": {
+        "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        "primaryBrandColor": "#1a237e",
+        "chatBackgroundColor": "#f5f5f5"
+    }
+  });
+</script>
+
 </body>
 </html>
