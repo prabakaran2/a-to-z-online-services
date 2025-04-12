@@ -32,6 +32,10 @@
             --whatsapp: #25D366;
             --light-bg: #f3f4f6;
             --text-dark: #263238;
+            --chatbot-bg: #ffffff;
+            --chatbot-header: #1a237e;
+            --user-msg: #e3f2fd;
+            --bot-msg: #f5f5f5;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -252,6 +256,155 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            width: 350px;
+            max-height: 500px;
+            background: var(--chatbot-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .chatbot-container.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .chatbot-header {
+            background: var(--chatbot-header);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        .chatbot-header h3 i {
+            margin-right: 10px;
+        }
+        .chatbot-header .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            max-height: 350px;
+        }
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            align-items: flex-end;
+        }
+        .user-message .message-content {
+            background: var(--user-msg);
+            color: var(--text-dark);
+            border-bottom-right-radius: 5px;
+        }
+        .bot-message {
+            align-items: flex-start;
+        }
+        .bot-message .message-content {
+            background: var(--bot-msg);
+            color: var(--text-dark);
+            border-bottom-left-radius: 5px;
+        }
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        .chatbot-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .chatbot-input button:hover {
+            background: var(--secondary);
+        }
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 0 15px 15px;
+        }
+        .quick-reply {
+            background: #e3f2fd;
+            border: none;
+            border-radius: 15px;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quick-reply:hover {
+            background: #bbdefb;
+        }
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
         @media (max-width: 768px) {
             .multi-column {
                 columns: 1;
@@ -277,6 +430,18 @@
                 font-size: 1.5rem;
                 bottom: 1rem;
                 right: 1rem;
+            }
+            .chatbot-container {
+                width: 90%;
+                left: 5%;
+                bottom: 80px;
+            }
+            .chatbot-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                bottom: 1rem;
+                left: 1rem;
             }
         }
         @media (max-width: 480px) {
@@ -541,8 +706,183 @@
         <p class="powered-by">Powered by KVP Enterprises</p>
     </footer>
 
-    <a href="https://wa.me/919342772123?text=Hi%20A%20to%20Z%20Services,%20I%20need%20help%20with..." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-</body>
-</html>
+    <!-- Chatbot Toggle Button -->
+   <div class="chatbot-toggle" id="chatbotToggle">
+  <i class="fas fa-robot"></i>
+  <span class="notification-badge">!</span>
+</div>
+
+<div class="chatbot-container" id="chatbotContainer">
+  <div class="chatbot-header">
+    <h3><i class="fas fa-robot"></i> Poornima S - Service Assistant</h3>
+    <button class="close-btn" id="closeChatbot">&times;</button>
+  </div>
+  <div class="chatbot-messages" id="chatbotMessages">
+    <div class="message bot-message">
+      <div class="message-content">
+        <strong>Welcome to A to Z Services!</strong><br>
+        I can provide document requirements and processing times for all services. How may I help you?
+      </div>
+    </div>
+  </div>
+  <div class="quick-replies">
+    <button class="quick-reply">Community Certificate</button>
+    <button class="quick-reply">Ration Card</button>
+    <button class="quick-reply">PAN Card</button>
+    <button class="quick-reply">GST Registration</button>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="userInput" placeholder="Ask about any service...">
+    <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Service Database
+  const serviceData = {
+    "community certificate": {
+      docs: "1. Application form\n2. Ration card copy\n3. School certificate\n4. Parent's community certificate",
+      time: "7-10 working days",
+      whatsapp: "Community Certificate"
+    },
+    "ration card": {
+      docs: "1. Form-I\n2. Aadhaar cards of all members\n3. Address proof\n4. Income certificate (if applicable)",
+      time: "15-20 working days",
+      whatsapp: "Ration Card"
+    },
+    "pan card": {
+      docs: "1. Form 49A\n2. Identity proof (Aadhaar/Driving License)\n3. Address proof\n4. Passport photo",
+      time: "15-20 days",
+      whatsapp: "PAN Card"
+    },
+    "gst registration": {
+      docs: "1. PAN card\n2. Business address proof\n3. Bank details\n4. Digital signature",
+      time: "3-5 working days",
+      whatsapp: "GST Registration"
+    }
+    // Add more services as needed
+  };
+
+  // Initialize elements
+  const toggleBtn = document.getElementById('chatbotToggle');
+  const chatbot = document.getElementById('chatbotContainer');
+  const messages = document.getElementById('chatbotMessages');
+  const userInput = document.getElementById('userInput');
+
+  // Toggle chatbot
+  toggleBtn.addEventListener('click', function() {
+    chatbot.classList.toggle('active');
+  });
+
+  document.getElementById('closeChatbot').addEventListener('click', function() {
+    chatbot.classList.remove('active');
+  });
+
+  // Send message function
+  function sendMessage() {
+    const text = userInput.value.trim();
+    if (text) {
+      addMessage(text, true);
+      userInput.value = '';
+      
+      setTimeout(() => {
+        const response = generateResponse(text);
+        addMessage(response, false);
+      }, 500);
+    }
+  }
+
+  // Quick replies
+  document.querySelectorAll('.quick-reply').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const service = this.textContent.toLowerCase();
+      addMessage(service, true);
+      
+      setTimeout(() => {
+        const response = generateResponse(service);
+        addMessage(response, false);
+      }, 300);
+    });
+  });
+
+  // Generate bot response
+  function generateResponse(query) {
+    const lowerQuery = query.toLowerCase();
+    
+    // Check for service match
+    for (const [service, data] of Object.entries(serviceData)) {
+      if (lowerQuery.includes(service)) {
+        return `For <strong>${service}</strong>:<br><br>
+                <strong>Documents Required:</strong><br>
+                ${data.docs.replace(/\n/g, '<br>')}<br><br>
+                <strong>Processing Time:</strong> ${data.time}<br><br>
+                <a href="https://wa.me/919342772123?text=I%20need%20help%20with%20${encodeURIComponent(data.whatsapp)}%20service" 
+                   target="_blank" class="whatsapp-link">
+                   <i class="fab fa-whatsapp"></i> Connect via WhatsApp
+                </a>`;
+      }
+    }
+    
+    // Default response
+    return `I can help with information about:<br>
+            - Community Certificate<br>
+            - Ration Card<br>
+            - PAN Card<br>
+            - GST Registration<br><br>
+            Please specify which service you need information about.`;
+  }
+
+  // Add message to chat
+  function addMessage(text, isUser) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${isUser ? 'user' : 'bot'}-message`;
+    msgDiv.innerHTML = `<div class="message-content">${text}</div>`;
+    messages.appendChild(msgDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // Event listeners
+  document.getElementById('sendMessage').addEventListener('click', sendMessage);
+  userInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+});
+</script>
+
+<style>
+/* Add these styles to your existing CSS */
+.whatsapp-link {
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.whatsapp-link:hover {
+  background-color: #128C7E;
+}
+
+.whatsapp-link i {
+  margin-right: 8px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff6f00;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+</style>
