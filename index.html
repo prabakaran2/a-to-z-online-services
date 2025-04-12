@@ -707,204 +707,165 @@
     </footer>
 
     <!-- Chatbot Toggle Button -->
-<div class="chatbot-toggle" id="chatbotToggle">
-  <i class="fas fa-robot"></i>
-  <span class="notification-badge">!</span>
+<!-- WhatsApp Floating Button -->
+<div class="whatsapp-chatbot" id="chatbotToggle">
+  <div class="chatbot-icon">
+    <i class="fab fa-whatsapp"></i>
+  </div>
+  <div class="chatbot-notification">1</div>
 </div>
 
-<div class="chatbot-container" id="chatbotContainer">
-  <div class="chatbot-header">
-    <h3><i class="fas fa-robot"></i> Service Assistant</h3>
-    <button class="close-btn" id="closeChatbot">&times;</button>
-  </div>
-  <div class="chatbot-messages" id="chatbotMessages">
-    <div class="message bot-message">
-      <div class="message-content">
-        <strong>Welcome to A to Z Online Services!</strong><br>
-        How can I help you today? Please choose a category:
-      </div>
+<!-- WhatsApp Chat Container -->
+<div class="whatsapp-container" id="chatbotContainer">
+  <!-- Chat Header -->
+  <div class="whatsapp-header">
+    <div class="whatsapp-avatar">
+      <img src="https://i.imgur.com/Jf5DZQK.png" alt="Poornima S">
     </div>
-    <div class="message bot-message">
+    <div class="whatsapp-info">
+      <h3>Poornima S</h3>
+      <p>Online • Service Assistant</p>
+    </div>
+    <div class="whatsapp-actions">
+      <button id="closeChatbot"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+  
+  <!-- Chat Body -->
+  <div class="whatsapp-body" id="chatbotMessages">
+    <!-- Initial greeting -->
+    <div class="whatsapp-message received">
       <div class="message-content">
-        <div class="category-list">
-          <div class="category-item" data-category="certificates">
-            <div class="category-header">
-              <i class="fas fa-file-alt"></i> Certificates & Licenses
-              <i class="fas fa-chevron-down arrow"></i>
-            </div>
-            <div class="services-list">
-              <div class="service-item" data-service="community certificate">Community Certificate</div>
-              <div class="service-item" data-service="nativity certificate">Nativity Certificate</div>
-              <div class="service-item" data-service="income certificate">Income Certificate</div>
-              <div class="service-item" data-service="legal heir certificate">Legal Heir Certificate</div>
-              <div class="service-item" data-service="ration card">Ration Card</div>
-            </div>
-          </div>
-          
-          <div class="category-item" data-category="common">
-            <div class="category-header">
-              <i class="fas fa-tasks"></i> Common Services
-              <i class="fas fa-chevron-down arrow"></i>
-            </div>
-            <div class="services-list">
-              <div class="service-item" data-service="pan card">PAN Card</div>
-              <div class="service-item" data-service="aadhaar card">Aadhaar Card</div>
-              <div class="service-item" data-service="passport">Passport</div>
-              <div class="service-item" data-service="driving licence">Driving Licence</div>
-            </div>
-          </div>
-          
-          <div class="category-item" data-category="tax">
-            <div class="category-header">
-              <i class="fas fa-file-invoice-dollar"></i> Tax Services
-              <i class="fas fa-chevron-down arrow"></i>
-            </div>
-            <div class="services-list">
-              <div class="service-item" data-service="gst registration">GST Registration</div>
-              <div class="service-item" data-service="income tax filing">Income Tax Filing</div>
-            </div>
-          </div>
-          
-          <div class="category-item" data-category="legal">
-            <div class="category-header">
-              <i class="fas fa-gavel"></i> Legal Services
-              <i class="fas fa-chevron-down arrow"></i>
-            </div>
-            <div class="services-list">
-              <div class="service-item" data-service="rti petition">RTI Petition</div>
-              <div class="service-item" data-service="affidavit preparation">Affidavit Preparation</div>
-            </div>
-          </div>
-          
-          <div class="category-item" data-category="career">
-            <div class="category-header">
-              <i class="fas fa-user-tie"></i> Career Services
-              <i class="fas fa-chevron-down arrow"></i>
-            </div>
-            <div class="services-list">
-              <div class="service-item" data-service="resume preparation">Resume Preparation</div>
-            </div>
-          </div>
+        <p>Namaskaram! 🙏</p>
+        <p>I'm Poornima, your A2Z Services assistant. How can I help you today?</p>
+      </div>
+      <div class="message-time">10:30 AM</div>
+    </div>
+    
+    <!-- Service categories -->
+    <div class="whatsapp-message received">
+      <div class="message-content">
+        <p>Please select a service category:</p>
+        <div class="category-buttons">
+          <button data-category="certificates">
+            <i class="fas fa-certificate"></i> Certificates
+          </button>
+          <button data-category="common">
+            <i class="fas fa-tasks"></i> Common Services
+          </button>
+          <button data-category="tax">
+            <i class="fas fa-file-invoice"></i> Tax Services
+          </button>
+          <button data-category="legal">
+            <i class="fas fa-gavel"></i> Legal Help
+          </button>
+          <button data-category="career">
+            <i class="fas fa-user-tie"></i> Career Support
+          </button>
         </div>
       </div>
+      <div class="message-time">10:30 AM</div>
     </div>
   </div>
-  <div class="chatbot-input">
-    <input type="text" id="userInput" placeholder="Type your question here...">
-    <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+  
+  <!-- Chat Footer -->
+  <div class="whatsapp-footer">
+    <button class="emoji-btn"><i class="far fa-smile"></i></button>
+    <input type="text" id="userInput" placeholder="Type a message">
+    <button class="send-btn" id="sendMessage"><i class="fas fa-paper-plane"></i></button>
   </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Service information database
-  const serviceInfo = {
+  // Service database with documents and processing times
+  const services = {
+    // Certificates
     "community certificate": {
       docs: ["Application form", "Ration card copy", "School certificate", "Parent's community certificate"],
-      time: "7-10 working days"
+      time: "7-10 working days",
+      note: "For school/college admissions"
     },
     "nativity certificate": {
-      docs: ["Application form", "School records", "Parent's certificate", "Residence proof"],
-      time: "10-12 working days"
+      docs: ["Application form", "School records", "Parent's nativity proof", "Address proof"],
+      time: "10-15 working days",
+      note: "Required for education/employment"
     },
-    "income certificate": {
-      docs: ["Application form", "Salary slips/income proof", "Property details", "Ration card copy"],
-      time: "5-7 working days"
-    },
-    "legal heir certificate": {
-      docs: ["Application form", "Death certificate", "Family tree", "Ration card copy"],
-      time: "10-15 working days"
+    // Common Services
+    "pan card": {
+      docs: ["Form 49A", "Identity proof", "Address proof", "Passport photo"],
+      time: "15-20 days",
+      note: "Mandatory for financial transactions"
     },
     "ration card": {
-      docs: ["Form-I", "Aadhaar cards of all members", "Address proof", "Income certificate (if applicable)"],
-      time: "15-20 working days"
+      docs: ["Form-I", "Aadhaar cards", "Address proof", "Income certificate"],
+      time: "15-20 working days",
+      note: "For subsidized food grains"
     },
-    "pan card": {
-      docs: ["Form 49A", "Identity proof (Aadhaar/Driving License)", "Address proof", "Passport photo"],
-      time: "15-20 days"
-    },
-    "aadhaar card": {
-      docs: ["Proof of identity", "Proof of address", "Proof of date of birth", "Mobile number linked"],
-      time: "20-30 days"
-    },
-    "passport": {
-      docs: ["Application form", "Address proof", "Date of birth proof", "Photo with white background"],
-      time: "30-45 days"
-    },
-    "driving licence": {
-      docs: ["Application form", "Age proof", "Address proof", "Medical certificate"],
-      time: "15-20 days"
-    },
+    // Tax Services
     "gst registration": {
       docs: ["PAN card", "Business address proof", "Bank details", "Digital signature"],
-      time: "3-5 working days"
+      time: "3-5 working days",
+      note: "For businesses above ₹40L turnover"
     },
-    "income tax filing": {
-      docs: ["PAN card", "Form 16", "Bank statements", "Investment proofs"],
-      time: "2-3 days"
-    },
+    // Legal Services
     "rti petition": {
-      docs: ["Application form", "Subject details", "Fee payment", "Identification proof"],
-      time: "1-2 days"
+      docs: ["Application form", "Identity proof", "Subject details", "Payment proof"],
+      time: "1-2 working days",
+      note: "Response within 30 days"
     },
-    "affidavit preparation": {
-      docs: ["Content details", "Identification proof", "Witness details"],
-      time: "1 day"
-    },
+    // Career Services
     "resume preparation": {
-      docs: ["Educational details", "Work experience", "Skills information", "Reference contacts"],
-      time: "1-2 days"
+      docs: ["Education certificates", "Experience letters", "Skills details", "Photo"],
+      time: "1-2 working days",
+      note: "Customized for job type"
     }
   };
 
-  // Initialize elements
+  // Categories with their services
+  const categories = {
+    "certificates": ["Community Certificate", "Nativity Certificate", "Income Certificate"],
+    "common": ["PAN Card", "Ration Card", "Aadhaar Card"],
+    "tax": ["GST Registration", "Income Tax Filing"],
+    "legal": ["RTI Petition", "Affidavit Preparation"],
+    "career": ["Resume Preparation", "Interview Prep"]
+  };
+
+  // DOM elements
   const toggleBtn = document.getElementById('chatbotToggle');
   const chatbot = document.getElementById('chatbotContainer');
   const messages = document.getElementById('chatbotMessages');
   const userInput = document.getElementById('userInput');
   const sendBtn = document.getElementById('sendMessage');
+  const closeBtn = document.getElementById('closeChatbot');
 
-  // Toggle chatbot visibility
+  // Toggle chat visibility
   toggleBtn.addEventListener('click', function() {
     chatbot.classList.toggle('active');
-    document.querySelector('.notification-badge').style.display = 'none';
+    document.querySelector('.chatbot-notification').style.display = 'none';
   });
 
-  // Close chatbot
-  document.getElementById('closeChatbot').addEventListener('click', function() {
+  // Close chat
+  closeBtn.addEventListener('click', function() {
     chatbot.classList.remove('active');
   });
 
-  // Toggle category expansion
-  document.querySelectorAll('.category-header').forEach(header => {
-    header.addEventListener('click', function() {
-      const categoryItem = this.closest('.category-item');
-      const servicesList = categoryItem.querySelector('.services-list');
-      const arrow = this.querySelector('.arrow');
-      
-      // Toggle the category
-      categoryItem.classList.toggle('expanded');
-      arrow.classList.toggle('fa-chevron-down');
-      arrow.classList.toggle('fa-chevron-up');
-      
-      // Smoothly show/hide services
-      if (categoryItem.classList.contains('expanded')) {
-        servicesList.style.maxHeight = servicesList.scrollHeight + 'px';
-      } else {
-        servicesList.style.maxHeight = '0';
-      }
-    });
+  // Handle category and service clicks
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('[data-category]')) {
+      const category = e.target.closest('[data-category]').getAttribute('data-category');
+      showCategoryServices(category);
+    }
+    else if (e.target.closest('[data-service]')) {
+      const service = e.target.closest('[data-service]').getAttribute('data-service');
+      showServiceDetails(service);
+    }
+    else if (e.target.closest('.back-btn')) {
+      showMainMenu();
+    }
   });
 
-  // Handle service item clicks
-  document.querySelectorAll('.service-item').forEach(item => {
-    item.addEventListener('click', function() {
-      const service = this.getAttribute('data-service');
-      showServiceInfo(service);
-    });
-  });
-
-  // Send message when button clicked or Enter pressed
+  // Send message
   sendBtn.addEventListener('click', sendMessage);
   userInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') sendMessage();
@@ -913,292 +874,255 @@ document.addEventListener('DOMContentLoaded', function() {
   function sendMessage() {
     const text = userInput.value.trim();
     if (text) {
-      addMessage(text, 'user');
+      addMessage(text, 'sent');
       userInput.value = '';
       
+      // Show typing indicator
+      showTyping();
+      
       setTimeout(() => {
+        hideTyping();
         const response = generateResponse(text);
-        addMessage(response, 'bot');
-      }, 500);
+        addMessage(response, 'received');
+      }, 1500);
     }
   }
 
-  function showServiceInfo(service) {
-    addMessage(service, 'user');
+  function showTyping() {
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'whatsapp-message received typing';
+    typingDiv.innerHTML = `
+      <div class="message-content">
+        <div class="typing-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    `;
+    messages.appendChild(typingDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function hideTyping() {
+    const typing = document.querySelector('.typing');
+    if (typing) typing.remove();
+  }
+
+  function showCategoryServices(category) {
+    addMessage(`Looking for ${category} services...`, 'sent');
+    
+    showTyping();
     
     setTimeout(() => {
-      if (serviceInfo[service]) {
-        const info = serviceInfo[service];
-        let response = `<strong>${service}</strong><br><br>`;
-        response += `<strong>Documents Required:</strong><br>`;
-        response += info.docs.map(doc => `• ${doc}`).join('<br>');
-        response += `<br><br><strong>Processing Time:</strong> ${info.time}<br><br>`;
-        response += `<a href="https://wa.me/919342772123?text=I%20need%20help%20with%20${encodeURIComponent(service)}" 
-                     target="_blank" class="whatsapp-link">
-                     <i class="fab fa-whatsapp"></i> Get Help on WhatsApp
-                     </a>`;
-        addMessage(response, 'bot');
+      hideTyping();
+      
+      let response = `<p>Here are our ${category} services:</p><div class="service-buttons">`;
+      
+      categories[category].forEach(service => {
+        const serviceKey = service.toLowerCase();
+        response += `
+          <button data-service="${serviceKey}">
+            <i class="fas ${getServiceIcon(serviceKey)}"></i> ${service}
+          </button>
+        `;
+      });
+      
+      response += `</div><div class="back-to-menu">
+        <button class="back-btn">← Back to Categories</button>
+      </div>`;
+      
+      addMessage(response, 'received');
+    }, 1000);
+  }
+
+  function showServiceDetails(service) {
+    addMessage(`Tell me about ${service}...`, 'sent');
+    
+    showTyping();
+    
+    setTimeout(() => {
+      hideTyping();
+      
+      if (services[service]) {
+        const info = services[service];
+        let response = `<p><strong>${formatServiceName(service)}</strong></p>`;
+        
+        if (info.note) {
+          response += `<div class="service-note">${info.note}</div>`;
+        }
+        
+        response += `
+          <div class="service-details">
+            <p><i class="fas fa-file-alt"></i> <strong>Documents Required:</strong></p>
+            <ul>${info.docs.map(doc => `<li>${doc}</li>`).join('')}</ul>
+            <p><i class="fas fa-clock"></i> <strong>Processing Time:</strong> ${info.time}</p>
+          </div>
+          <div class="action-buttons">
+            <a href="https://wa.me/919342772123?text=Hi%20Poornima,%20I%20need%20help%20with%20${encodeURIComponent(service)}" 
+               target="_blank" class="whatsapp-action">
+               <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+            <button class="call-action" onclick="window.location.href='tel:+919342772123'">
+              <i class="fas fa-phone"></i> Call Now
+            </button>
+          </div>
+          <div class="back-to-services">
+            <button class="back-btn">← Back to Services</button>
+          </div>
+        `;
+        
+        addMessage(response, 'received');
       } else {
-        addMessage(`I don't have information about ${service}. Please contact us for assistance.`, 'bot');
+        addMessage(`I don't have detailed information about "${formatServiceName(service)}" yet. Please contact me directly for assistance.`, 'received');
       }
-    }, 300);
+    }, 1500);
   }
 
-  function generateResponse(query) {
-    const lowerQuery = query.toLowerCase();
+  function showMainMenu() {
+    addMessage(`Show me the main menu`, 'sent');
     
-    // Check if query matches any service
-    for (const [service, info] of Object.entries(serviceInfo)) {
-      if (lowerQuery.includes(service)) {
-        let response = `<strong>${service}</strong><br><br>`;
-        response += `<strong>Documents Required:</strong><br>`;
-        response += info.docs.map(doc => `• ${doc}`).join('<br>');
-        response += `<br><br><strong>Processing Time:</strong> ${info.time}<br><br>`;
-        response += `<a href="https://wa.me/919342772123?text=I%20need%20help%20with%20${encodeURIComponent(service)}" 
-                     target="_blank" class="whatsapp-link">
-                     <i class="fab fa-whatsapp"></i> Get Help on WhatsApp
-                     </a>`;
-        return response;
-      }
-    }
+    showTyping();
     
-    // Default responses
-    if (/hi|hello|hey/i.test(query)) {
-      return "Hello! How can I help you today? Please select a service from the list above.";
-    }
-    
-    if (/thank|thanks/i.test(query)) {
-      return "You're welcome! Is there anything else I can help with?";
-    }
-    
-    if (/contact|number|phone|call|speak|talk/i.test(query)) {
-      return `You can reach us at:<br><br>
-              <strong>Phone:</strong> <a href="tel:+919342772123">+91 93427 72123</a><br>
-              <strong>WhatsApp:</strong> <a href="https://wa.me/919342772123" target="_blank" class="whatsapp-link">
-                <i class="fab fa-whatsapp"></i> Chat Now
-              </a>`;
-    }
-    
-    return `I'm not sure about "${query}". Please select a service from the list above or contact us for assistance.`;
+    setTimeout(() => {
+      hideTyping();
+      
+      let response = `<p>Please select a service category:</p><div class="category-buttons">`;
+      
+      Object.keys(categories).forEach(category => {
+        response += `
+          <button data-category="${category}">
+            <i class="fas ${getCategoryIcon(category)}"></i> ${formatServiceName(category)}
+          </button>
+        `;
+      });
+      
+      response += `</div>`;
+      
+      addMessage(response, 'received');
+    }, 1000);
   }
 
-  function addMessage(text, sender) {
+  function generateResponse(text) {
+    const lowerText = text.toLowerCase();
+    
+    // Check for greetings
+    if (/hi|hello|hey|namaskaram/i.test(lowerText)) {
+      return "Vanakkam! 😊 How can I assist you today?";
+    }
+    
+    // Check for thanks
+    if (/thank|thanks|nandri/i.test(lowerText)) {
+      return "You're most welcome! ❤️ Is there anything else I can help with?";
+    }
+    
+    // Check for contact info
+    if (/contact|number|phone|call|speak|talk/i.test(lowerText)) {
+      return `
+        <p>You can reach me directly through:</p>
+        <div class="contact-options">
+          <a href="https://wa.me/919342772123" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +91 93427 72123
+          </a>
+          <a href="tel:+919342772123">
+            <i class="fas fa-phone"></i> Call: +91 93427 72123
+          </a>
+          <p><i class="fas fa-map-marker-alt"></i> Visit: 74/2, Pudur Main Road, Coimbatore</p>
+        </div>
+      `;
+    }
+    
+    // Default response
+    return `
+      <p>I'm not sure about that. Here are our main service categories:</p>
+      <div class="category-buttons">
+        <button data-category="certificates">
+          <i class="fas fa-certificate"></i> Certificates
+        </button>
+        <button data-category="common">
+          <i class="fas fa-tasks"></i> Common Services
+        </button>
+        <button data-category="tax">
+          <i class="fas fa-file-invoice"></i> Tax Services
+        </button>
+      </div>
+    `;
+  }
+
+  function addMessage(content, type) {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    
     const msgDiv = document.createElement('div');
-    msgDiv.className = `message ${sender}-message`;
-    msgDiv.innerHTML = `<div class="message-content">${text}</div>`;
+    msgDiv.className = `whatsapp-message ${type}`;
+    msgDiv.innerHTML = `
+      <div class="message-content">${content}</div>
+      <div class="message-time">${timeString}</div>
+    `;
+    
     messages.appendChild(msgDiv);
     messages.scrollTop = messages.scrollHeight;
+  }
+
+  function getCategoryIcon(category) {
+    const icons = {
+      "certificates": "fa-certificate",
+      "common": "fa-tasks",
+      "tax": "fa-file-invoice",
+      "legal": "fa-gavel",
+      "career": "fa-user-tie"
+    };
+    return icons[category] || "fa-question-circle";
+  }
+
+  function getServiceIcon(service) {
+    if (service.includes('certificate')) return 'fa-certificate';
+    if (service.includes('card')) return 'fa-address-card';
+    if (service.includes('tax') || service.includes('gst')) return 'fa-file-invoice';
+    if (service.includes('legal') || service.includes('rti')) return 'fa-gavel';
+    if (service.includes('resume') || service.includes('interview')) return 'fa-user-tie';
+    return 'fa-question-circle';
+  }
+
+  function formatServiceName(text) {
+    return text.split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 });
 </script>
 
 <style>
-/* Chatbot Styles */
-.chatbot-container {
+/* WhatsApp Chatbot Styles */
+.whatsapp-chatbot {
   position: fixed;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  width: 350px;
-  max-height: 500px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-  overflow: hidden;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.chatbot-container.active {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.chatbot-header {
-  background: #1a237e;
-  color: white;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chatbot-messages {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-  max-height: 350px;
-}
-
-.message {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.message-content {
-  padding: 10px 15px;
-  border-radius: 18px;
-  max-width: 80%;
-  word-wrap: break-word;
-}
-
-.user-message {
-  align-items: flex-end;
-}
-
-.user-message .message-content {
-  background: #e3f2fd;
-  color: #263238;
-  border-bottom-right-radius: 5px;
-}
-
-.bot-message {
-  align-items: flex-start;
-}
-
-.bot-message .message-content {
-  background: #f5f5f5;
-  color: #263238;
-  border-bottom-left-radius: 5px;
-}
-
-.chatbot-input {
-  display: flex;
-  padding: 10px;
-  border-top: 1px solid #eee;
-}
-
-.chatbot-input input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  outline: none;
-}
-
-.chatbot-input button {
-  background: #1a237e;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.chatbot-input button:hover {
-  background: #303f9f;
-}
-
-/* Category and Service Styles */
-.category-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.category-item {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.category-header {
-  padding: 12px 15px;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.category-header:hover {
-  background: #eeeeee;
-}
-
-.category-header i:first-child {
-  margin-right: 10px;
-  color: #1a237e;
-}
-
-.arrow {
-  transition: transform 0.2s;
-}
-
-.services-list {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.service-item {
-  padding: 10px 15px 10px 40px;
-  cursor: pointer;
-  border-top: 1px solid #f0f0f0;
-  transition: background 0.2s;
-}
-
-.service-item:hover {
-  background: #f5f5f5;
-}
-
-/* WhatsApp Link */
-.whatsapp-link {
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-top: 10px;
-  font-weight: 500;
-}
-
-.whatsapp-link:hover {
-  background: #128C7E;
-}
-
-.whatsapp-link i {
-  margin-right: 8px;
-}
-
-/* Toggle Button */
-.chatbot-toggle {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  background: #1a237e;
-  color: white;
-  border-radius: 50%;
+  bottom: 20px;
+  right: 20px;
   width: 60px;
   height: 60px;
+  background: #25D366;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 100;
+  color: white;
+  font-size: 28px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   cursor: pointer;
+  z-index: 1000;
   transition: all 0.3s;
 }
 
-.chatbot-toggle:hover {
+.whatsapp-chatbot:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.notification-badge {
+.chatbot-notification {
   position: absolute;
   top: -5px;
   right: -5px;
-  background: #ff6f00;
+  background: #FF3B30;
   color: white;
   border-radius: 50%;
   width: 20px;
@@ -1207,21 +1131,380 @@ document.addEventListener('DOMContentLoaded', function() {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .chatbot-container {
+.whatsapp-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: #e5ddd5;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1001;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.whatsapp-container.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.whatsapp-header {
+  background: #075E54;
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.whatsapp-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.whatsapp-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.whatsapp-info {
+  flex: 1;
+}
+
+.whatsapp-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.whatsapp-info p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.whatsapp-actions button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s;
+}
+
+.whatsapp-actions button:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.1);
+}
+
+.whatsapp-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #e5ddd5;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.whatsapp-message {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.whatsapp-message.received {
+  align-items: flex-start;
+}
+
+.whatsapp-message.sent {
+  align-items: flex-end;
+}
+
+.message-content {
+  padding: 8px 12px;
+  border-radius: 7.5px;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 14px;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.1);
+}
+
+.received .message-content {
+  background: white;
+  color: #111;
+  border-bottom-left-radius: 0;
+}
+
+.sent .message-content {
+  background: #DCF8C6;
+  color: #111;
+  border-bottom-right-radius: 0;
+}
+
+.message-time {
+  font-size: 11px;
+  color: #666;
+  margin-top: 3px;
+  padding: 0 5px;
+}
+
+.typing .message-content {
+  background: white;
+  width: 45px;
+  padding: 8px 12px;
+}
+
+.typing-dots {
+  display: flex;
+  padding: 5px 0;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  background: #999;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingAnimation 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) {
+  animation-delay: 0s;
+}
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingAnimation {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-3px); }
+}
+
+.whatsapp-footer {
+  background: #f0f0f0;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+}
+
+.emoji-btn, .send-btn {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.whatsapp-footer input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+/* Buttons and interactive elements */
+.category-buttons, .service-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.category-buttons button, .service-buttons button {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.category-buttons button:hover, .service-buttons button:hover {
+  background: #f5f5f5;
+  border-color: #075E54;
+}
+
+.category-buttons button i, .service-buttons button i {
+  margin-right: 8px;
+  color: #075E54;
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.service-note {
+  background: #FFF9C4;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin: 8px 0;
+  font-size: 13px;
+  border-left: 3px solid #FFD600;
+}
+
+.service-details {
+  margin: 10px 0;
+}
+
+.service-details p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.service-details i {
+  margin-right: 8px;
+  color: #075E54;
+}
+
+.service-details ul {
+  margin: 5px 0 5px 20px;
+  padding: 0;
+}
+
+.service-details li {
+  margin-bottom: 3px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.whatsapp-action, .call-action {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.whatsapp-action {
+  background: #25D366;
+  color: white;
+}
+
+.whatsapp-action:hover {
+  background: #128C7E;
+}
+
+.call-action {
+  background: #075E54;
+  color: white;
+}
+
+.call-action:hover {
+  background: #054D44;
+}
+
+.back-to-menu, .back-to-services {
+  margin-top: 15px;
+}
+
+.back-btn {
+  background: transparent;
+  border: 1px solid #075E54;
+  color: #075E54;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: #075E54;
+  color: white;
+}
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.contact-options a {
+  color: #075E54;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.contact-options a:hover {
+  color: #054D44;
+  text-decoration: underline;
+}
+
+.contact-options i {
+  width: 20px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .whatsapp-container {
     width: 90%;
-    left: 5%;
+    right: 5%;
+    height: 70vh;
     bottom: 80px;
   }
   
-  .chatbot-toggle {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
-    bottom: 1rem;
-    left: 1rem;
+  .whatsapp-chatbot {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    bottom: 15px;
+    right: 15px;
   }
 }
 </style>
