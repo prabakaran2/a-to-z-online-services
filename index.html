@@ -707,7 +707,7 @@
     </footer>
 
     <!-- Chatbot Toggle Button -->
-   <div class="chatbot-toggle" id="chatbotToggle">
+<div class="chatbot-toggle" id="chatbotToggle">
   <i class="fas fa-robot"></i>
   <span class="notification-badge">!</span>
 </div>
@@ -720,16 +720,21 @@
   <div class="chatbot-messages" id="chatbotMessages">
     <div class="message bot-message">
       <div class="message-content">
-        <strong>Welcome to A to Z Services!</strong><br>
-        I can provide document requirements and processing times for all services. How may I help you?
+        <strong>Welcome to A to Z Online Services!</strong><br>
+        I can provide document requirements and processing times for all our services. Please select a service category below:
       </div>
     </div>
-  </div>
-  <div class="quick-replies">
-    <button class="quick-reply">Community Certificate</button>
-    <button class="quick-reply">Ration Card</button>
-    <button class="quick-reply">PAN Card</button>
-    <button class="quick-reply">GST Registration</button>
+    <div class="message bot-message">
+      <div class="message-content">
+        <div class="service-categories">
+          <button class="service-category" data-category="certificates">Certificates & Licenses</button>
+          <button class="service-category" data-category="common">Common Services</button>
+          <button class="service-category" data-category="tax">Tax Services</button>
+          <button class="service-category" data-category="legal">Legal Services</button>
+          <button class="service-category" data-category="career">Career Services</button>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="chatbot-input">
     <input type="text" id="userInput" placeholder="Ask about any service...">
@@ -739,29 +744,111 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Service Database
+  // Comprehensive Service Database
   const serviceData = {
+    // Certificates & Licenses
     "community certificate": {
       docs: "1. Application form\n2. Ration card copy\n3. School certificate\n4. Parent's community certificate",
       time: "7-10 working days",
       whatsapp: "Community Certificate"
+    },
+    "nativity certificate": {
+      docs: "1. Application form\n2. School records\n3. Parent's certificate\n4. Residence proof",
+      time: "10-12 working days",
+      whatsapp: "Nativity Certificate"
+    },
+    "income certificate": {
+      docs: "1. Application form\n2. Salary slips/income proof\n3. Property details\n4. Ration card copy",
+      time: "5-7 working days",
+      whatsapp: "Income Certificate"
+    },
+    "legal heir certificate": {
+      docs: "1. Application form\n2. Death certificate\n3. Family tree\n4. Ration card copy",
+      time: "10-15 working days",
+      whatsapp: "Legal Heir Certificate"
     },
     "ration card": {
       docs: "1. Form-I\n2. Aadhaar cards of all members\n3. Address proof\n4. Income certificate (if applicable)",
       time: "15-20 working days",
       whatsapp: "Ration Card"
     },
+    
+    // Common Services
     "pan card": {
       docs: "1. Form 49A\n2. Identity proof (Aadhaar/Driving License)\n3. Address proof\n4. Passport photo",
       time: "15-20 days",
       whatsapp: "PAN Card"
     },
+    "aadhaar card": {
+      docs: "1. Proof of identity\n2. Proof of address\n3. Proof of date of birth\n4. Mobile number linked",
+      time: "20-30 days",
+      whatsapp: "Aadhaar Card"
+    },
+    "passport": {
+      docs: "1. Application form\n2. Address proof\n3. Date of birth proof\n4. Photo with white background",
+      time: "30-45 days",
+      whatsapp: "Passport"
+    },
+    "driving licence": {
+      docs: "1. Application form\n2. Age proof\n3. Address proof\n4. Medical certificate",
+      time: "15-20 days",
+      whatsapp: "Driving Licence"
+    },
+    
+    // Tax Services
     "gst registration": {
       docs: "1. PAN card\n2. Business address proof\n3. Bank details\n4. Digital signature",
       time: "3-5 working days",
       whatsapp: "GST Registration"
+    },
+    "income tax filing": {
+      docs: "1. PAN card\n2. Form 16\n3. Bank statements\n4. Investment proofs",
+      time: "2-3 days",
+      whatsapp: "Income Tax Filing"
+    },
+    
+    // Legal Services
+    "rti petition": {
+      docs: "1. Application form\n2. Subject details\n3. Fee payment\n4. Identification proof",
+      time: "1-2 days",
+      whatsapp: "RTI Petition"
+    },
+    "affidavit preparation": {
+      docs: "1. Content details\n2. Identification proof\n3. Witness details",
+      time: "1 day",
+      whatsapp: "Affidavit Preparation"
+    },
+    
+    // Career Services
+    "resume preparation": {
+      docs: "1. Educational details\n2. Work experience\n3. Skills information\n4. Reference contacts",
+      time: "1-2 days",
+      whatsapp: "Resume Preparation"
     }
-    // Add more services as needed
+  };
+
+  // Service categories with their services
+  const serviceCategories = {
+    "certificates": [
+      "Community Certificate", "Nativity Certificate", "Income Certificate", 
+      "Legal Heir Certificate", "Ration Card", "Marriage Certificate"
+    ],
+    "common": [
+      "PAN Card", "Aadhaar Card", "Passport", "Driving Licence", 
+      "Voter ID", "Patta Chitta"
+    ],
+    "tax": [
+      "GST Registration", "GST Filing", "Income Tax Filing", 
+      "TDS Filing", "Tax Consultation"
+    ],
+    "legal": [
+      "RTI Petition", "Affidavit Preparation", "Legal Notice", 
+      "Property Documents", "Legal Consultation"
+    ],
+    "career": [
+      "Resume Preparation", "Cover Letter", "Job Application", 
+      "Interview Prep"
+    ]
   };
 
   // Initialize elements
@@ -773,6 +860,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Toggle chatbot
   toggleBtn.addEventListener('click', function() {
     chatbot.classList.toggle('active');
+    // Remove notification badge when opened
+    document.querySelector('.notification-badge').style.display = 'none';
   });
 
   document.getElementById('closeChatbot').addEventListener('click', function() {
@@ -793,18 +882,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Quick replies
-  document.querySelectorAll('.quick-reply').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const service = this.textContent.toLowerCase();
-      addMessage(service, true);
-      
-      setTimeout(() => {
-        const response = generateResponse(service);
-        addMessage(response, false);
-      }, 300);
+  // Generate service buttons for a category
+  function generateServiceButtons(category) {
+    const services = serviceCategories[category] || [];
+    let buttonsHTML = '<div class="service-buttons">';
+    
+    services.forEach(service => {
+      const serviceKey = service.toLowerCase();
+      buttonsHTML += `<button class="service-button" data-service="${serviceKey}">${service}</button>`;
     });
-  });
+    
+    buttonsHTML += '</div>';
+    return buttonsHTML;
+  }
 
   // Generate bot response
   function generateResponse(query) {
@@ -824,13 +914,46 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    // Default response
-    return `I can help with information about:<br>
-            - Community Certificate<br>
-            - Ration Card<br>
-            - PAN Card<br>
-            - GST Registration<br><br>
-            Please specify which service you need information about.`;
+    // Check if it's a category selection
+    for (const [category, services] of Object.entries(serviceCategories)) {
+      if (lowerQuery.includes(category)) {
+        return `Here are the services we offer in this category:<br><br>
+                ${generateServiceButtons(category)}<br>
+                Please select a service to see document requirements and processing time.`;
+      }
+    }
+    
+    // Check for greetings
+    const greetings = ['hi', 'hello', 'hey', 'greetings'];
+    if (greetings.some(greet => lowerQuery.includes(greet))) {
+      return `Hello! I'm here to help with information about our services. Please select a category or ask about a specific service.`;
+    }
+    
+    // Check for thank you
+    const thanks = ['thank', 'thanks', 'appreciate'];
+    if (thanks.some(word => lowerQuery.includes(word))) {
+      return `You're welcome! Is there anything else I can help you with?`;
+    }
+    
+    // Check for contact information requests
+    const contactWords = ['contact', 'number', 'phone', 'call', 'speak', 'talk', 'person', 'agent'];
+    if (contactWords.some(word => lowerQuery.includes(word))) {
+      return getContactResponse();
+    }
+    
+    // Default response for unknown queries
+    return `I'm sorry, I don't have information about "${query}".<br><br>
+            ${getContactResponse()}`;
+  }
+
+  // Standard contact response
+  function getContactResponse() {
+    return `Please contact our support team for assistance:<br><br>
+            <strong>Phone:</strong> <a href="tel:+919342772123">+91 93427 72123</a><br>
+            <strong>WhatsApp:</strong> <a href="https://wa.me/919342772123" target="_blank" class="whatsapp-link">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a><br><br>
+            Our team will be happy to help you with your query.`;
   }
 
   // Add message to chat
@@ -840,6 +963,33 @@ document.addEventListener('DOMContentLoaded', function() {
     msgDiv.innerHTML = `<div class="message-content">${text}</div>`;
     messages.appendChild(msgDiv);
     messages.scrollTop = messages.scrollHeight;
+    
+    // Add event listeners for any new buttons
+    setTimeout(() => {
+      document.querySelectorAll('.service-category').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const category = this.getAttribute('data-category');
+          addMessage(this.textContent, true);
+          
+          setTimeout(() => {
+            const response = generateResponse(category);
+            addMessage(response, false);
+          }, 300);
+        });
+      });
+      
+      document.querySelectorAll('.service-button').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const service = this.getAttribute('data-service');
+          addMessage(this.textContent, true);
+          
+          setTimeout(() => {
+            const response = generateResponse(service);
+            addMessage(response, false);
+          }, 300);
+        });
+      });
+    }, 100);
   }
 
   // Event listeners
@@ -884,5 +1034,56 @@ document.addEventListener('DOMContentLoaded', function() {
   align-items: center;
   justify-content: center;
   font-size: 12px;
+}
+
+.service-categories, .service-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.service-category, .service-button {
+  background: #e3f2fd;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.service-category {
+  background: #1a237e;
+  color: white;
+}
+
+.service-category:hover {
+  background: #303f9f;
+}
+
+.service-button:hover {
+  background: #bbdefb;
+}
+
+.service-buttons {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.service-button {
+  text-align: left;
+  width: 100%;
+}
+
+/* Style for phone number link */
+.chatbot-messages a[href^="tel:"] {
+  color: #1a237e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.chatbot-messages a[href^="tel:"]:hover {
+  text-decoration: underline;
 }
 </style>
