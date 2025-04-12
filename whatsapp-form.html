@@ -1,9 +1,9 @@
-<!-- Bilingual whatsapp-form.html with English / Tamil side-by-side -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Service Request Form / சேவை விண்ணப்பம்</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -19,7 +19,7 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         h2 { color: #1a237e; font-size: 1.5rem; }
-        input, button {
+        input, button, textarea {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -32,6 +32,7 @@
             color: white;
             font-weight: bold;
             border: none;
+            cursor: pointer;
         }
         .back-link {
             display: inline-block;
@@ -49,6 +50,12 @@
             padding-left: 20px;
             margin: 0;
         }
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 10px 0;
+            color: #1a237e;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +66,13 @@
         <form>
             <input type="text" id="service" readonly>
             <input type="text" id="name" placeholder="Your Full Name / உங்கள் முழு பெயர்" required>
-            <input type="tel" id="mobile" placeholder="WhatsApp Number / வாட்ஸ்அப் எண்" required>
+            <input type="tel" id="mobile" placeholder="WhatsApp Number / வாட்ஸ்அப் எண்" pattern="[0-9]{10}" required>
+            <textarea id="details" placeholder="Additional Details (Optional) / கூடுதல் விவரங்கள் (விருப்பத்தேர்வு)"></textarea>
+            
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner fa-spin"></i> Processing / செயலாக்கம்
+            </div>
+            
             <button type="button" onclick="sendToWhatsApp()">
                 <i class="fab fa-whatsapp"></i> Send via WhatsApp / வாட்ஸ்அப்பில் அனுப்பவும்
             </button>
@@ -76,25 +89,26 @@
         const service = urlParams.get('service');
 
         const documentsData = {
-    "Community Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Parent's Certificate / பெற்றோர் சான்றிதழ்"],
-    "Nativity Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Birth Certificate / பிறப்பு சான்றிதழ்"],
-    "Income Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Salary Proof / சம்பள ஆதாரம்"],
-    "First Graduate Certificate": ["Aadhaar Card / ஆதார் அட்டை", "SSLC Marksheet / பத்தாம் வகுப்பு மதிப்பெண் பட்டியல்", "Sibling Certificates / சகோதரர் சான்றிதழ்கள்"],
-    "Residence Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Rental Agreement / வாடகை ஒப்பந்தம்"],
-    "Legal Heir Certificate": ["Death Certificate / மரண சான்றிதழ்", "Aadhaar Card / ஆதார் அட்டை", "Family Member IDs / குடும்ப உறுப்பினர்களின் அடையாள அட்டைகள்"],
-    "PAN Card": ["Aadhaar Card / ஆதார் அட்டை", "Passport Size Photo / பாஸ்போர்ட் அளவு புகைப்படம்"],
-    "Aadhaar Card": ["Proof of DOB / பிறந்த தேதி சான்று", "Address Proof / முகவரி சான்று", "Mobile Number / மொபைல் எண்"],
-    "Driving Licence": ["Aadhaar Card / ஆதார் அட்டை", "Learner's Licence / பயிலுனர் உரிமம்", "Photo / புகைப்படம்"],
-    "Ration Card": ["Aadhaar Card / ஆதார் அட்டை", "Family Member IDs / குடும்ப உறுப்பினர்களின் அடையாளங்கள்", "Address Proof / முகவரி சான்று"],
-    "Passport": ["Aadhaar Card / ஆதார் அட்டை", "Birth Certificate / பிறப்பு சான்றிதழ்", "Address Proof / முகவரி சான்று"],
-    "PF Services": ["UAN Number / யு.ஏ.என் எண்", "Aadhaar Linked Bank Account / ஆதார் இணைக்கப்பட்ட வங்கி கணக்கு"],
-    "PM Schemes": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Bank Passbook / வங்கி பாஸ் புத்தகம்"],
-    "Insurance": ["Aadhaar Card / ஆதார் அட்டை", "Nominee Details / நியமிக்கப்பட்டவர் விவரங்கள்", "Policy Number / காப்பீட்டு எண்"],
-    "Patta Chitta": ["Aadhaar Card / ஆதார் அட்டை", "Survey Number / நில அளவீட்டு எண்", "Land Tax Receipt / நில வரி ரசீது"],
-    "Rental Lease": ["Aadhaar Card / ஆதார் அட்டை", "EB Bill / மின் கட்டண ரசீது", "Owner & Tenant Details / உரிமையாளர் மற்றும் வாடகையாளரின் விவரங்கள்"],
-    "Marriage Certificate": ["Marriage Photo / திருமண புகைப்படம்", "Aadhaar Cards of Couple / தம்பதியின் ஆதார் அட்டைகள்", "Witness IDs / சாட்சியாளர்களின் அடையாளங்கள்"],
-    "Other Agreements": ["Aadhaar Card / ஆதார் அட்டை", "Agreement Details / ஒப்பந்த விவரங்கள்"]
-};
+            // E-Sevai Services
+            "Community Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Parent's Certificate / பெற்றோர் சான்றிதழ்"],
+            "Nativity Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Birth Certificate / பிறப்பு சான்றிதழ்"],
+            
+            // Common Services
+            "PAN Card": ["Aadhaar Card / ஆதார் அட்டை", "Passport Photo / பாஸ்போர்ட் புகைப்படம்"],
+            "Aadhaar Card": ["Proof of DOB / பிறந்த தேதி சான்று", "Address Proof / முகவரி சான்று"],
+            
+            // Tax Services
+            "GST Registration": ["PAN Card / பான் அட்டை", "Business Address Proof / வணிக முகவரி சான்று"],
+            "Income Tax Filing": ["Form 16 / படிவம் 16", "Investment Proofs / முதலீட்டு ஆதாரங்கள்"],
+            
+            // Legal Services
+            "RTI Petition": ["Subject Details / விஷய விவரங்கள்", "Department Name / துறை பெயர்"],
+            "Affidavit Preparation": ["Purpose Details / நோக்கம் விவரங்கள்", "ID Proof / அடையாள சான்று"],
+            
+            // Career Services
+            "Resume Preparation": ["Education Certificates / கல்வி சான்றிதழ்கள்", "Work Experience / பணி அனுபவம்"],
+            "Cover Letter": ["Job Description / வேலை விவரம்", "Key Skills / முக்கிய திறன்கள்"]
+        };
 
         if (service) {
             document.getElementById('service-title').textContent = service + " Request / சேவை விண்ணப்பம்";
@@ -117,13 +131,36 @@
             const name = document.getElementById('name').value;
             const mobile = document.getElementById('mobile').value;
             const selectedService = document.getElementById('service').value;
+            const details = document.getElementById('details').value;
+            
+            if (!name || !mobile) {
+                alert("Please fill required fields / தயவு செய்து தேவையான புலங்களை நிரப்பவும்");
+                return;
+            }
 
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            const docList = documentsData[selectedService] || [];
+            
             let message = `*New Service Request*%0A%0A`;
             message += `*Service:* ${selectedService}%0A`;
             message += `*Name:* ${name}%0A`;
-            message += `*Mobile:* ${mobile}`;
+            message += `*Mobile:* ${mobile}%0A`;
+            
+            if (details) {
+                message += `*Details:* ${details}%0A`;
+            }
+            
+            message += `%0A*Required Documents:*%0A`;
+            docList.forEach(doc => {
+                message += `- ${doc}%0A`;
+            });
 
-            window.open(`https://wa.me/919342772123?text=${message}`, '_blank');
+            setTimeout(() => {
+                window.open(`https://wa.me/919342772123?text=${message}`, '_blank');
+                loading.style.display = 'none';
+            }, 1000);
         }
     </script>
 </body>
