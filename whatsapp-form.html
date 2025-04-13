@@ -123,16 +123,63 @@
         const service = urlParams.get('service');
 
         const documentsData = {
-            "Community Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Parent's Certificate / பெற்றோர் சான்றிதழ்"],
-            "Nativity Certificate": ["Aadhaar Card / ஆதார் அட்டை", "Ration Card / ரேஷன் அட்டை", "Birth Certificate / பிறப்பு சான்றிதழ்"],
-            "PAN Card": ["Aadhaar Card / ஆதார் அட்டை", "Passport Photo / பாஸ்போர்ட் புகைப்படம்"],
-            "Aadhaar Card": ["Proof of DOB / பிறந்த தேதி சான்று", "Address Proof / முகவரி சான்று"],
-            "GST Registration": ["PAN Card / பான் அட்டை", "Business Address Proof / வணிக முகவரி சான்று"],
-            "Income Tax Filing": ["Form 16 / படிவம் 16", "Investment Proofs / முதலீட்டு ஆதாரங்கள்"],
-            "RTI Petition": ["Subject Details / விஷய விவரங்கள்", "Department Name / துறை பெயர்"],
-            "Affidavit Preparation": ["Purpose Details / நோக்கம் விவரங்கள்", "ID Proof / அடையாள சான்று"],
-            "Resume Preparation": ["Education Certificates / கல்வி சான்றிதழ்கள்", "Work Experience / பணி அனுபவம்"],
-            "Cover Letter": ["Job Description / வேலை விவரம்", "Key Skills / முக்கிய திறன்கள்"]
+            // Certificates & Licenses
+            "Community Certificate": ["Aadhaar Card", "Ration Card", "Parent's Community Certificate", "School Certificate"],
+            "Nativity Certificate": ["Aadhaar Card", "Ration Card", "Birth Certificate", "Parent's Nativity Proof"],
+            "Income Certificate": ["Aadhaar Card", "Salary Slips/Form 16", "Bank Statements", "Affidavit"],
+            "First Graduate Certificate": ["Community Certificate", "Educational Certificates", "Family Declaration", "School/College Records"],
+            "Residence Certificate": ["Aadhaar Card", "Electricity Bill", "Ration Card", "Voter ID"],
+            "Legal Heir Certificate": ["Death Certificate", "Relationship Proof", "Family Member Details", "Affidavit"],
+            "Family Migration Certificate": ["Old Address Proof", "New Address Proof", "Family Ration Card", "ID Proofs"],
+            "Inter-Caste Marriage Certificate": ["Marriage Certificate", "Community Certificates (Both)", "Joint Affidavit", "Photos"],
+            "No Male Child Certificate": ["Family Ration Card", "Birth Certificates", "Affidavit", "Application Form"],
+            "Unmarried Certificate": ["Age Proof", "Address Proof", "Affidavit", "Application Form"],
+            "Deserted Woman Certificate": ["Police Complaint (if any)", "Affidavit", "Witness Statements", "Application Form"],
+            "Widow Certificate": ["Husband's Death Certificate", "Marriage Proof", "Address Proof", "Affidavit"],
+            "OBC Certificate": ["Community Proof", "Income Certificate", "Residence Proof", "Application Form"],
+            "Unemployment Certificate": ["Educational Certificates", "Address Proof", "Affidavit", "Application Form"],
+            "COVID-19 Death Document": ["Death Certificate", "Hospital Records", "COVID Test Report", "ID Proof"],
+            "Agricultural Income Certificate": ["Land Records", "Income Proof", "PAN Card", "Affidavit"],
+            "Small Farmer Certificate": ["Land Records", "Income Certificate", "Ration Card", "Application Form"],
+            "Solvency Certificate": ["Property Documents", "Income Proof", "Tax Receipts", "Affidavit"],
+            "Educational Records Loss Certificate": ["Police Complaint", "Affidavit", "Old School Details", "ID Proof"],
+            "Pawn Broker Licence": ["Police Clearance", "Address Proof", "Business Proof", "Application Form"],
+            "Money Lender's Licence": ["Financial Records", "Police Verification", "Bank Guarantee", "Application Form"],
+            
+            // Common Services
+            "PAN Card": ["Aadhaar Card", "Passport Photo", "Identity Proof", "Address Proof"],
+            "Aadhaar Card": ["Proof of Identity", "Proof of Address", "Date of Birth Proof"],
+            "Voter ID": ["Address Proof", "Age Proof", "Passport Photo", "Form 6"],
+            "Ration Card": ["Aadhaar Cards of All Members", "Address Proof", "Income Certificate", "Form-I"],
+            "Passport": ["Address Proof", "Date of Birth Proof", "PAN Card", "Photo"],
+            "Driving Licence": ["Learner's License", "Age Proof", "Address Proof", "Medical Certificate"],
+            "PF Services": ["Form 19/10C/31", "Aadhaar Card", "Bank Details", "ID Proof"],
+            "PM Schemes": ["Aadhaar Card", "Bank Details", "Eligibility Proof", "Application Form"],
+            "Insurance": ["ID Proof", "Medical Reports", "Nominee Details", "Application Form"],
+            "Patta Chitta": ["Property Documents", "Tax Receipts", "Aadhaar Card", "Survey Details"],
+            "Rental Lease": ["Property Documents", "ID Proofs (Both)", "Rent Agreement Draft", "Witness"],
+            "Marriage Certificate": ["Age Proof", "Wedding Photos", "Witness", "Application Form"],
+            "Other Agreements": ["Draft Agreement", "ID Proofs", "Terms Document", "Witness"],
+            
+            // Tax Services
+            "GST Registration": ["PAN Card", "Business Address Proof", "Bank Details", "Digital Signature"],
+            "GST Filing": ["GST Returns", "Sales/Purchase Records", "Payment Challans", "Bank Statements"],
+            "Income Tax Filing": ["Form 16", "Bank Statements", "Investment Proofs", "Rent Receipts"],
+            "TDS Filing": ["TDS Returns", "Challan Details", "PAN of Deductees", "Payment Proofs"],
+            "Tax Consultation": ["Financial Documents", "Investment Proofs", "Previous Returns", "Business Details"],
+            
+            // Legal Services
+            "RTI Petition": ["Identity Proof", "Subject Details", "Payment Proof", "Application Form"],
+            "Affidavit Preparation": ["Supporting Documents", "ID Proof", "Address Proof"],
+            "Legal Notice": ["Incident Details", "Supporting Documents", "Recipient Address", "Client ID Proof"],
+            "Property Documents": ["Existing Documents", "Survey Details", "Title Deeds", "Tax Receipts"],
+            "Legal Consultation": ["Case Details", "Existing Documents", "ID Proof"],
+            
+            // Career Services
+            "Resume Preparation": ["Educational Certificates", "Experience Letters", "Skills Details", "Photo"],
+            "Cover Letter": ["Job Description", "Resume Copy", "Your Achievements"],
+            "Job Application": ["Resume", "Cover Letter", "Certificates", "ID Proof"],
+            "Interview Prep": ["Job Description", "Resume Copy"]
         };
 
         if (service) {
