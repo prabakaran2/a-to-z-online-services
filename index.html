@@ -2,711 +2,616 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A to Z Online Services - Complete Government Solutions in Tamil Nadu</title>
-    <meta name="description" content="One-stop solution for all government services including certificates, licenses, tax filing, legal services and more in Tamil Nadu. Fast processing of community certificates, ration cards, PAN cards in Coimbatore.">
-    <meta name="keywords" content="government services Tamil Nadu, online certificates Tamil Nadu, e-sevai, Tamil Nadu documents, community certificate online, ration card Tamil Nadu, legal heir certificate, GST registration Coimbatore">
-    <meta name="author" content="KVP Enterprises">
-    <meta name="robots" content="index, follow">
-    <meta name="revisit-after" content="7 days">
-    <meta name="language" content="English, Tamil">
-    <meta name="geo.region" content="IN-TN">
-    <meta name="geo.placename" content="Coimbatore">
-    <link rel="canonical" href="https://example.com/index.html" />
-    
-    <!-- Social Media Meta Tags -->
-    <meta property="og:title" content="A to Z Online Services - Complete Government Solutions in Tamil Nadu">
-    <meta property="og:description" content="One-stop solution for all government services including certificates, licenses, tax filing, legal services in Coimbatore">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com">
-    <meta property="og:image" content="https://example.com/your-logo.jpg">
-    <meta property="og:site_name" content="A to Z Online Services">
-    <meta name="twitter:card" content="summary_large_image">
-    
+    <meta name="description" content="One-stop solution for all government services in Tamil Nadu">
+    <link rel="icon" href="images/Logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         :root {
-            --primary: #1a237e;
-            --secondary: #ff6f00;
-            --whatsapp: #25D366;
-            --light-bg: #f3f4f6;
-            --text-dark: #263238;
-            --chatbot-bg: #ffffff;
-            --chatbot-header: #1a237e;
-            --user-msg: #e3f2fd;
-            --bot-msg: #f5f5f5;
+            --primary: #1a237e;  /* Deep blue */
+            --secondary: #ff6f00; /* Orange */
+            --accent: #4caf50;   /* Green */
+            --light: #f5f5f5;
+            --dark: #212121;
+            --text: #333;
+            --logo-glow: rgba(255, 111, 0, 0.4);
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Noto Sans Tamil', sans-serif;
             margin: 0;
             padding: 0;
-            background: var(--light-bg);
-            color: var(--text-dark);
-            font-size: 16px;
-            line-height: 1.5;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
         }
+        
+        /* Enhanced Header with Logo */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-        header h1 {
-            font-size: 1.8rem;
+        
+        .header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            padding: 15px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+        }
+        
+        .logo-container {
+            position: relative;
+            padding: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, 
+                rgba(26, 35, 126, 0.2) 0%, 
+                rgba(255, 111, 0, 0.2) 100%);
+            box-shadow: 0 4px 15px var(--logo-glow);
+            transition: var(--transition);
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px var(--logo-glow);
+        }
+        
+        .main-logo {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            filter: 
+                drop-shadow(0 2px 4px rgba(0,0,0,0.2))
+                brightness(1.05);
+        }
+        
+        .header-text {
+            text-align: left;
+        }
+        
+        .header-text h1 {
             margin: 0;
-            line-height: 1.3;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            line-height: 1.2;
         }
-        header p {
-            font-size: 1rem;
-            margin-top: 0.5rem;
+        
+        .tamil-title {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 1.8rem;
+            margin-top: 5px;
         }
-        .powered-by {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
+        
+        .tagline {
+            margin: 5px 0 0;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
+        
+        .location-tag {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+        
+        /* Navigation */
         nav {
             background: var(--primary);
-            padding: 0.8rem 0;
+            padding: 0.5rem 1rem;
             position: sticky;
             top: 0;
-            z-index: 99;
+            z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        
         nav ul {
-            list-style: none;
             display: flex;
             justify-content: center;
-            margin: 0;
-            padding: 0;
             flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+        
         nav li {
             margin: 0.3rem;
         }
+        
         nav a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem;
-            border-radius: 5px;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            min-height: 44px;
+            padding: 0.7rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-weight: 500;
             display: flex;
             align-items: center;
+            font-size: 0.95rem;
         }
+        
         nav a:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
         }
+        
         nav a i {
             margin-right: 8px;
             font-size: 1rem;
         }
+        
+        /* Main content */
         .container {
             max-width: 1200px;
-            margin: 1.5rem auto;
-            padding: 0.8rem;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
-        section {
-            margin-bottom: 2.5rem;
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('images/hero-bg.jpg') center/cover;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            position: relative;
         }
-        section h2 {
-            border-left: 5px solid var(--secondary);
-            padding-left: 1rem;
-            font-size: 1.3rem;
-            color: var(--primary);
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
-        section h2 i {
-            margin-right: 10px;
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
-        .services-grid {
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background: #e65100;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        /* Service categories */
+        .categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.2rem;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
-        .service-card {
+        
+        .category-card {
             background: white;
-            padding: 1.2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--secondary);
-            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
         }
-        .service-card:hover {
+        
+        .category-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
-        .service-card h3 {
+        
+        .category-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-content h3 {
             margin-top: 0;
             color: var(--primary);
-            font-size: 1.1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .multi-column {
-            columns: 2;
-            column-gap: 1.5rem;
-        }
-        .multi-column li {
-            break-inside: avoid;
-            padding: 0.4rem 0;
-        }
-        .service-card a {
-            color: var(--text-dark);
-            text-decoration: none;
-            display: block;
-            transition: all 0.2s;
-            padding: 0.3rem 0;
-            min-height: 44px;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            border-radius: 4px;
-            padding: 0.5rem;
+            gap: 10px;
         }
-        .service-card a:hover {
-            transform: translateX(5px);
+        
+        .category-content h3 i {
             color: var(--secondary);
-            background-color: rgba(255, 111, 0, 0.05);
         }
+        
+        .category-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            margin: 3rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.1;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Footer */
         footer {
-            background: var(--primary);
+            background: var(--dark);
             color: white;
+            padding: 3rem 1rem 1.5rem;
             text-align: center;
-            padding: 1.5rem 1rem;
-            margin-top: 2rem;
-            font-size: 0.9rem;
+            margin-top: 3rem;
         }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            filter: 
+                grayscale(100%) 
+                brightness(300%)
+                drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+            transition: filter 0.3s ease;
+        }
+        
+        .footer-logo:hover {
+            filter: 
+                grayscale(0%)
+                brightness(1.1)
+                drop-shadow(0 2px 4px var(--logo-glow));
+        }
+        
+        .footer-tagline {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
         .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
         }
+        
         .footer-links a {
             color: white;
-            margin: 0 10px;
             text-decoration: none;
+            transition: var(--transition);
+            padding: 0.5rem;
         }
+        
         .footer-links a:hover {
-            text-decoration: underline;
+            color: var(--secondary);
         }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* WhatsApp Float */
         .whatsapp-float {
             position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            background: var(--whatsapp);
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
             color: white;
-            border-radius: 50%;
             width: 60px;
             height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 100;
+            z-index: 99;
+            transition: var(--transition);
             text-decoration: none;
-            transition: all 0.3s;
         }
+        
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) translateY(-5px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
         }
-        .contact-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--secondary);
-        }
-        .contact-card p {
-            margin: 1rem 0;
-            display: flex;
-            align-items: center;
-        }
-        .contact-card i {
-            margin-right: 10px;
-            color: var(--primary);
-            font-size: 1.1rem;
-            min-width: 25px;
-        }
-        .contact-card a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .contact-card a:hover {
-            color: var(--secondary);
-            text-decoration: underline;
-        }
-        .seo-content, .seo-description {
-            display: none;
-        }
-        .seo-footer {
-            padding: 10px;
-            color: #ccc;
-            font-size: 0.8rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Chatbot Styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            width: 350px;
-            max-height: 500px;
-            background: var(--chatbot-bg);
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            display: flex;
-            flex-direction: column;
-            z-index: 1000;
-            overflow: hidden;
-            transform: translateY(100%);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .chatbot-container.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .chatbot-header {
-            background: var(--chatbot-header);
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-        .chatbot-header h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-        }
-        .chatbot-header h3 i {
-            margin-right: 10px;
-        }
-        .chatbot-header .close-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-        .chatbot-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            max-height: 350px;
-        }
-        .message {
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-        }
-        .message-content {
-            padding: 10px 15px;
-            border-radius: 18px;
-            max-width: 80%;
-            word-wrap: break-word;
-        }
-        .user-message {
-            align-items: flex-end;
-        }
-        .user-message .message-content {
-            background: var(--user-msg);
-            color: var(--text-dark);
-            border-bottom-right-radius: 5px;
-        }
-        .bot-message {
-            align-items: flex-start;
-        }
-        .bot-message .message-content {
-            background: var(--bot-msg);
-            color: var(--text-dark);
-            border-bottom-left-radius: 5px;
-        }
-        .chatbot-input {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #eee;
-        }
-        .chatbot-input input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-        }
-        .chatbot-input button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .chatbot-input button:hover {
-            background: var(--secondary);
-        }
-        .quick-replies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-            padding: 0 15px 15px;
-        }
-        .quick-reply {
-            background: #e3f2fd;
-            border: none;
-            border-radius: 15px;
-            padding: 5px 12px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .quick-reply:hover {
-            background: #bbdefb;
-        }
-        .chatbot-toggle {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 100;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
-
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .multi-column {
-                columns: 1;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 20px;
             }
+            
+            .header-text {
+                text-align: center;
+            }
+            
+            .logo-container {
+                padding: 10px;
+            }
+            
+            .main-logo {
+                height: 60px;
+            }
+            
             nav ul {
                 flex-direction: column;
                 align-items: center;
             }
+            
             nav li {
-                margin: 0.3rem 0;
                 width: 100%;
                 text-align: center;
             }
-            nav a {
-                justify-content: center;
+            
+            .hero {
+                padding: 3rem 1rem;
             }
-            .services-grid {
-                grid-template-columns: 1fr;
+            
+            .hero h2 {
+                font-size: 1.8rem;
             }
+            
             .whatsapp-float {
+                bottom: 1.5rem;
+                right: 1.5rem;
                 width: 50px;
                 height: 50px;
                 font-size: 1.5rem;
-                bottom: 1rem;
-                right: 1rem;
-            }
-            .chatbot-container {
-                width: 90%;
-                left: 5%;
-                bottom: 80px;
-            }
-            .chatbot-toggle {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-                bottom: 1rem;
-                left: 1rem;
-            }
-        }
-        @media (max-width: 480px) {
-            header {
-                padding: 1rem;
-            }
-            header h1 {
-                font-size: 1.5rem;
-            }
-            header p {
-                font-size: 0.9rem;
-            }
-            .service-card {
-                padding: 1rem;
-            }
-            section h2 {
-                font-size: 1.2rem;
-            }
-            .container {
-                margin: 1rem auto;
-                padding: 0.5rem;
-            }
-            .contact-card {
-                padding: 1rem;
             }
         }
     </style>
-    
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "A to Z Online Services",
-      "image": "https://example.com/your-logo.jpg",
-      "@id": "",
-      "url": "https://example.com",
-      "telephone": "+919342772123",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "First Floor, 74/2, Pudur Main Road, Peelamedu Pudur",
-        "addressLocality": "Coimbatore",
-        "postalCode": "641004",
-        "addressRegion": "Tamil Nadu",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "11.0168",
-        "longitude": "76.9558"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/yourpage",
-        "https://twitter.com/yourhandle"
-      ]
-    }
-    </script>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://example.com/"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Government Services",
-        "item": "https://example.com/#esevai"
-      },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Tamil Nadu Documents",
-        "item": "https://example.com/#common"
-      }]
-    }
-    </script>
 </head>
 <body>
-    <!-- Hidden SEO Content -->
-    <div class="seo-content">
-        <h1>Government Services in Tamil Nadu - A to Z Online Services</h1>
-        <h2>Online Certificate Application, Document Processing, and Government Scheme Assistance</h2>
-    </div>
-    <p class="seo-description">
-        A to Z Online Services provides complete government solutions in Coimbatore, Tamil Nadu. 
-        We assist with community certificates, income certificates, legal heir certificates, 
-        ration cards, PAN cards, Aadhaar services, GST registration, and all government document 
-        processing needs in Tamil Nadu.
-    </p>
-
     <header>
-        <h1>A to Z Online Services / ஏ முதல் ஜெட் வரை ஆன்லைன் சேவைகள்</h1>
-        <p>Complete Government Solutions / முழுமையான அரசு தீர்வுகள்</p>
-        <div class="powered-by">Powered by KVP Enterprises</div>
+        <div class="header-wrapper">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="images/Logo.png" alt="A to Z Online Services Logo" class="main-logo">
+                </div>
+                <div class="header-text">
+                    <h1>A to Z Online Services</h1>
+                    <div class="tamil-title">ஏ முதல் ஜெட் வரை ஆன்லைன் சேவைகள்</div>
+                    <p class="tagline">Complete Government Solutions in Tamil Nadu</p>
+                    <div class="location-tag">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Coimbatore, Tamil Nadu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-
+    
     <nav>
         <ul>
-            <li><a href="#esevai"><i class="fas fa-certificate"></i> E-Sevai / இ-சேவை</a></li>
-            <li><a href="#common"><i class="fas fa-tasks"></i> Common Services / பொதுச் சேவைகள்</a></li>
-            <li><a href="#tax"><i class="fas fa-file-invoice-dollar"></i> Tax Services / வரி சேவைகள்</a></li>
-            <li><a href="#legal"><i class="fas fa-gavel"></i> Legal Services / சட்ட சேவைகள்</a></li>
-            <li><a href="#career"><i class="fas fa-user-tie"></i> Career Services / தொழில் சேவைகள்</a></li>
-            <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact / தொடர்பு</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="esevai.html"><i class="fas fa-certificate"></i> E-Sevai</a></li>
+            <li><a href="common.html"><i class="fas fa-tasks"></i> Common Services</a></li>
+            <li><a href="tax.html"><i class="fas fa-file-invoice-dollar"></i> Tax Services</a></li>
+            <li><a href="legal.html"><i class="fas fa-gavel"></i> Legal Services</a></li>
+            <li><a href="career.html"><i class="fas fa-user-tie"></i> Career Services</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone-alt"></i> Contact</a></li>
         </ul>
     </nav>
-
+    
     <div class="container">
-        <!-- E-Sevai Services -->
-        <section id="esevai">
-            <h2><i class="fas fa-file-alt"></i> E-Sevai Services / இ-சேவை சேவைகள்</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Certificates & Licenses / சான்றிதழ்கள் மற்றும் உரிமங்கள்</h3>
-                    <ul class="multi-column">
-                        <li><a href="whatsapp-form.html?service=Community Certificate">Community Certificate / சமூக சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Nativity Certificate">Nativity Certificate / பூர்விக சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Income Certificate">Income Certificate / வருமான சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=First Graduate Certificate">First Graduate Certificate / முதன்முதலில் பட்டம் பெற்ற சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Residence Certificate">Residence Certificate / இருப்பிடம் சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Legal Heir Certificate">Legal Heir Certificate / சட்ட வாரிசு சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Family Migration Certificate">Family Migration Certificate / குடும்ப இடமாற்ற சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Inter-Caste Marriage Certificate">Inter-Caste Marriage Certificate / இனத்திணை திருமண சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=No Male Child Certificate">No Male Child Certificate / ஆண் குழந்தை இல்லாத சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Unmarried Certificate">Unmarried Certificate / திருமணமாகாதவர் சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Deserted Woman Certificate">Deserted Woman Certificate / துறந்த பெண் சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Widow Certificate">Widow Certificate / விதவை சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=OBC Certificate">OBC Certificate / பிற்படுத்தப்பட்ட வகுப்பு சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Unemployment Certificate">Unemployment Certificate / வேலைவாய்ப்பு இல்லாத சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=COVID-19 Death Document">COVID-19 Death Document / கோவிட்-19 மரணம் ஆவணம்</a></li>
-                        <li><a href="whatsapp-form.html?service=Agricultural Income Certificate">Agricultural Income Certificate / விவசாய வருமான சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Small Farmer Certificate">Small Farmer Certificate / சிறு விவசாயி சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Solvency Certificate">Solvency Certificate / சொத்துத்திறன் சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Educational Records Loss Certificate">Educational Records Loss Certificate / கல்வி ஆவண இழப்பு சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Pawn Broker Licence">Pawn Broker Licence / பாண் கடன் உரிமம்</a></li>
-                        <li><a href="whatsapp-form.html?service=Money Lender's Licence">Money Lender's Licence / பணம் கடன் வழங்கும் உரிமம்</a></li>
-                    </ul>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Your Complete Government Service Solution</h2>
+                <p>Fast, reliable assistance for all your government service needs in Tamil Nadu</p>
+                <a href="contact.html" class="btn"><i class="fas fa-phone-alt"></i> Contact Us Today</a>
+            </div>
+        </section>
+        
+        <section>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 1.5rem;">Our Services</h2>
+            <div class="categories">
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('images/certificates.jpg');"></div>
+                    <div class="category-content">
+                        <h3><i class="fas fa-file-alt"></i> E-Sevai Certificates</h3>
+                        <p>Community, Income, Legal Heir and all government certificates processed quickly and efficiently</p>
+                        <a href="esevai.html" class="btn">View Services</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('images/common-services.jpg');"></div>
+                    <div class="category-content">
+                        <h3><i class="fas fa-id-card"></i> Common Services</h3>
+                        <p>Aadhaar, PAN, Ration Card, Passport and other essential document services</p>
+                        <a href="common.html" class="btn">View Services</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('images/tax-services.jpg');"></div>
+                    <div class="category-content">
+                        <h3><i class="fas fa-calculator"></i> Tax Services</h3>
+                        <p>GST Registration, Filing, Income Tax and all tax-related services with expert guidance</p>
+                        <a href="tax.html" class="btn">View Services</a>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- Common Services -->
-        <section id="common">
-            <h2><i class="fas fa-tasks"></i> Common Services / பொதுச் சேவைகள்</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Essential Services / அவசியமான சேவைகள்</h3>
-                    <ul class="multi-column">
-                        <li><a href="whatsapp-form.html?service=PAN Card">PAN Card / பான் அட்டை</a></li>
-                        <li><a href="whatsapp-form.html?service=Aadhaar Card">Aadhaar Card / ஆதார் அட்டை</a></li>
-                        <li><a href="whatsapp-form.html?service=Voter ID">Voter ID / வாக்காளர் அடையாள அட்டை</a></li>
-                        <li><a href="whatsapp-form.html?service=Ration Card">Ration Card / ரேஷன் அட்டை</a></li>
-                        <li><a href="whatsapp-form.html?service=Passport">Passport / பாஸ்போர்ட்</a></li>
-                        <li><a href="whatsapp-form.html?service=Driving Licence">Driving Licence / ஓட்டுநர் உரிமம்</a></li>
-                        <li><a href="whatsapp-form.html?service=PF Services">PF Services / பிஎப் சேவைகள்</a></li>
-                        <li><a href="whatsapp-form.html?service=PM Schemes">PM Schemes / பிரதமர் திட்டங்கள்</a></li>
-                        <li><a href="whatsapp-form.html?service=Insurance">Insurance / காப்பீடு</a></li>
-                        <li><a href="whatsapp-form.html?service=Patta Chitta">Patta Chitta / பட்டா சிட்டா</a></li>
-                        <li><a href="whatsapp-form.html?service=Rental Lease">Rental Lease / வாடகை ஒப்பந்தம்</a></li>
-                        <li><a href="whatsapp-form.html?service=Marriage Certificate">Marriage Certificate / திருமண சான்றிதழ்</a></li>
-                        <li><a href="whatsapp-form.html?service=Other Agreements">Other Agreements / பிற ஒப்பந்தங்கள்</a></li>
-                    </ul>
+        
+        <section class="testimonials">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 1.5rem;">What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A to Z Services helped me get my community certificate in just 3 days when I needed it urgently for college admission."</p>
+                    <div class="testimonial-author">
+                        <img src="images/client1.jpg" alt="Client">
+                        <span>Ramesh Kumar, Coimbatore</span>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Tax Services -->
-        <section id="tax">
-            <h2><i class="fas fa-file-invoice-dollar"></i> Tax Services / வரி சேவைகள்</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Business & Tax Filing / வணிகம் & வரி தாக்கல்</h3>
-                    <ul class="multi-column">
-                        <li><a href="whatsapp-form.html?service=GST Registration">GST Registration / ஜிஎஸ்டி பதிவு</a></li>
-                        <li><a href="whatsapp-form.html?service=GST Filing">GST Filing / ஜிஎஸ்டி தாக்கல்</a></li>
-                        <li><a href="whatsapp-form.html?service=Income Tax Filing">Income Tax Filing / வருமான வரி தாக்கல்</a></li>
-                        <li><a href="whatsapp-form.html?service=TDS Filing">TDS Filing / டிடிஎஸ் தாக்கல்</a></li>
-                        <li><a href="whatsapp-form.html?service=Tax Consultation">Tax Consultation / வரி ஆலோசனை</a></li>
-                    </ul>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Their GST registration service saved me so much time and hassle. Highly recommended for small business owners."</p>
+                    <div class="testimonial-author">
+                        <img src="images/client2.jpg" alt="Client">
+                        <span>Priya M., Tiruppur</span>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Legal Services -->
-        <section id="legal">
-            <h2><i class="fas fa-gavel"></i> Legal Services / சட்ட சேவைகள்</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Public Legal Services / பொது சட்ட சேவைகள்</h3>
-                    <ul>
-                        <li><a href="whatsapp-form.html?service=RTI Petition">RTI Petition / தகவல் அறியும் உரிமை மனு</a></li>
-                        <li><a href="whatsapp-form.html?service=Affidavit Preparation">Affidavit Preparation / உறுதிமொழி ஆவணம் தயாரிப்பு</a></li>
-                        <li><a href="whatsapp-form.html?service=Legal Notice">Legal Notice Drafting / சட்ட நோட்டீஸ் தயாரிப்பு</a></li>
-                        <li><a href="whatsapp-form.html?service=Property Documents">Property Documents / சொத்து ஆவணங்கள்</a></li>
-                        <li><a href="whatsapp-form.html?service=Legal Consultation">Legal Consultation / சட்ட ஆலோசனை</a></li>
-                    </ul>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Professional and reliable service for all my family's document needs. We've been using them for years."</p>
+                    <div class="testimonial-author">
+                        <img src="images/client3.jpg" alt="Client">
+                        <span>Karthik Family, Erode</span>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Career Services -->
-        <section id="career">
-            <h2><i class="fas fa-user-tie"></i> Career Services / தொழில் சேவைகள்</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Job Support / வேலை ஆதரவு</h3>
-                    <ul>
-                        <li><a href="whatsapp-form.html?service=Resume Preparation">Resume Preparation / விண்ணப்பம் தயாரிப்பு</a></li>
-                        <li><a href="whatsapp-form.html?service=Cover Letter">Cover Letter Writing / கவர் லெட்டர் தயாரிப்பு</a></li>
-                        <li><a href="whatsapp-form.html?service=Job Application">Job Application Assistance / வேலை விண்ணப்ப உதவி</a></li>
-                        <li><a href="whatsapp-form.html?service=Interview Prep">Interview Preparation / நேர்காணல் தயாரிப்பு</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2><i class="fas fa-envelope"></i> Contact Us / எங்களை தொடர்புகொள்</h2>
-            <div class="contact-card">
-                <p><i class="fas fa-phone-alt"></i> <strong>Phone / தொலைபேசி:</strong> <a href="tel:+919342772123">+91 93427 72123</a></p>
-                <p><i class="fas fa-map-marker-alt"></i> <strong>Address / முகவரி:</strong> First Floor, 74/2, Pudur Main Road, Peelamedu Pudur, Coimbatore - 641004</p>
-                <p><i class="fas fa-envelope"></i> <strong>Email / மின்னஞ்சல்:</strong> <a href="mailto:prababrind@gmail.com">prababrind@gmail.com</a></p>
-                <p><i class="fas fa-clock"></i> <strong>Working Hours / பணி நேரம்:</strong> Monday to Saturday, 9:00 AM to 6:00 PM</p>
             </div>
         </section>
     </div>
-
+    
     <footer>
-        <div class="footer-links">
-            <a href="#esevai">Services</a>
-            <a href="about.html">About Us</a>
-            <a href="#contact">Contact</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
+        <div class="footer-content">
+            <div class="footer-logo-container">
+                <img src="images/Logo.png" alt="A to Z Online Services Logo" class="footer-logo">
+                <div class="footer-tagline">Complete Government Solutions</div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">All Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/919342772123" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 A to Z Online Services. All Rights Reserved.</p>
+                <p>Powered by KVP Enterprises</p>
+            </div>
         </div>
-        <div class="seo-footer">
-            <p>A to Z Online Services is your trusted partner for all government document processing needs in Coimbatore and across Tamil Nadu. 
-            We specialize in fast and reliable service for community certificates, income certificates, legal heir certificates, 
-            ration cards, PAN cards, Aadhaar services, GST registration, and all government scheme applications.</p>
-            <p>Located conveniently in Peelamedu, we serve clients throughout Tamil Nadu with expert assistance for 
-            all your government documentation requirements.</p>
-        </div>
-        <p>A to Z Online Services &copy; 2023. All Rights Reserved.</p>
-        <p class="powered-by">Powered by KVP Enterprises</p>
     </footer>
-
-    <!-- Chatbot Toggle Button -->
+     <!-- Chatbot Toggle Button -->
 <!-- WhatsApp Floating Button -->
 <div class="whatsapp-chatbot" id="chatbotToggle">
   <div class="chatbot-icon">
@@ -1740,3 +1645,5 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }
 </style>
+</body>
+</html>
